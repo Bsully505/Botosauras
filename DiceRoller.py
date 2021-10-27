@@ -1,6 +1,5 @@
 import random
 
-
 class DiceRoller:
    
     def roll20():
@@ -62,6 +61,7 @@ class DiceRoller:
         #N = neutral
         #A = advantage
 
+
         advOrDis = usableCommand[2]
 
         skill = int(usableCommand[1])
@@ -82,13 +82,17 @@ class DiceRoller:
                 total = total +  min(self.whichRoll(self,int(diceSides)),self.whichRoll(self,int(diceSides))) + skill
             else:
                 total = total + (self.whichRoll(self,int(diceSides))+skill)
+
         return total
+
 
             
     
     
     
 
+
 if (__name__ == "__main__"):
     #+2 will be replaced with a skill that will then be used to calculate the bonus to be added
     DiceRoller.getRoll(DiceRoller,'!1D20 +2 A')
+
