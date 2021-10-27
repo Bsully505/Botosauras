@@ -1,11 +1,5 @@
 import random
 
-#how to run 
-
-
-#features to add 
-#if the user gives dice side of not 20,12,10,8,6,4 return error 
-
 class DiceRoller:
    
     def roll20():
@@ -44,41 +38,52 @@ class DiceRoller:
         return 0
 
 
-    
-    def GetRoll(self,command):
+    def processCommand(self, command):
         #the format of this command should be !(numberofRoles)D(number of sides on dice)A(advnatage or disadvantage or neutral)S(Skills)
-        #first i want to get rid fo the explanation point
-        usableCommand = command.split('!')[1]
-        NumOfRoles = 1
-        print(usableCommand)
-        #determine how many roles will happen
-        if(len(usableCommand.split('D')[0])>0):
-            NumOfRoles= usableCommand.split('D')[0]
-        usableCommand = usableCommand.split('D')[1]
-        #obtain the type of dice used 
-        DiceSides = usableCommand.split('A')[0]
+        # Removes ! from command and splits at [space-separated] parameters
+        usableCommand = command.split('!')[1].split(' ')
+        
+        print("COMMAND:", usableCommand)
 
-        #remove old data
-        usableCommand = usableCommand.split('A')[1]
+        diceRoll = usableCommand[0].split('D')
+
+        #determine how many roles will happen
+        numOfRoles= diceRoll[0]
+        print("# ROLLS:", numOfRoles)
+        
+        #obtain the type of dice used 
+        diceSides = diceRoll[1]
+        print("DICE SIDES:", diceSides)
 
         #get the advantage variable 
         #D = disadvantage
         #N = neutral
         #A = advantage
-        advOrDis = usableCommand.split('S')[0]
-        #I have to figure out what the advantage and disadvantage does to the 
+        advOrDis = usableCommand[2]
 
-        Skill = int(usableCommand.split('S')[1])
-        
+        skill = int(usableCommand[1])
+
+        return (numOfRoles, advOrDis, diceSides, skill)
+
+    
+    def getRoll(self,command):
+        (numOfRoles, advOrDis, diceSides, skill) = self.processCommand(self, command)
 
         total = 0
-        print(DiceSides)
-        for i in range(0,int(NumOfRoles)):
-            total = total+ (self.whichRoll(self,int(DiceSides))+Skill)
-        print(total)
+        # Roll the dice the specified number of times and add the results to the total
+        for i in range(0,int(numOfRoles)):
+            # If advantage, roll the die twice and take the higher result
+            if (advOrDis == 'A'):
+                total = total +  max(self.whichRoll(self,int(diceSides)),self.whichRoll(self,int(diceSides))) + skill
+            elif (advOrDis == 'D'):
+                total = total +  min(self.whichRoll(self,int(diceSides)),self.whichRoll(self,int(diceSides))) + skill
+            else:
+                total = total + (self.whichRoll(self,int(diceSides))+skill)
+        print("RESULT:", total)
             
     
     
     
-
-DiceRoller.GetRoll(DiceRoller,'!2D20A1S+2')
+if (__name__ == "__main__"):
+    #+2 will be replaced with a skill that will then be used to calculate the bonus to be added
+    DiceRoller.getRoll(DiceRoller,'!1D20 +2 A')
