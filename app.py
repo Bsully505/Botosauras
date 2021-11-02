@@ -43,7 +43,7 @@ def post_challenge():
     else:
         print('reached here')
         return jsonify({
-            "ERROR": "no name found, please send a name."
+            "ERROR": "no name found, please send a this is different."
         })
 
 # A welcome message to test our server
