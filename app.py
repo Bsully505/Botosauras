@@ -57,8 +57,8 @@ def handle_message(event_data):
                     % message["user"]  # noqa
                 )
                 slack.chat_postMessage(channel=channel_id, text=message)
-    thread = Thread(target=send_reply, kwargs={"value": event_data})
-    thread.start()
+    #thread = Thread(target=send_reply, kwargs={"value": event_data})
+    #thread.start()
     return Response(status=200)
 
 
