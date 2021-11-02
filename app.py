@@ -1,6 +1,7 @@
 # app.py
 
 from flask import Flask, request, jsonify
+import json
 app = Flask(__name__)
 
 @app.route('/getmsg/', methods=['GET'])
@@ -44,16 +45,18 @@ def respond():
 
 @app.route('/', methods=['POST'])
 def post_challenge():
-    param = request.form.get('challenge')
-    print(param)
+    param = request.get_json()
+    print(request.get_data())
+    print(request.get_json())
     # You can add the test cases you made in the previous function, but in our case here you are just testing the POST functionality
     if param:
         return jsonify({
-            "Message": param,
+            "challenge": param['challenge'],
             # Add this option to distinct the POST request
             "METHOD" : "POST"
         })
     else:
+        print('reached here')
         return jsonify({
             "ERROR": "no name found, please send a name."
         })
