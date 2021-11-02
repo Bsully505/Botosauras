@@ -7,7 +7,7 @@ import json
 import random
 app = Flask(__name__)
 
-@app.route('/roll20/', methods=['GET'])
+@app.route('/roll20/', methods=['GET','POST'])
 def respond():
     # Retrieve the name from url parameter
     
