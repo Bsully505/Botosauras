@@ -19,6 +19,9 @@ SLACK_SIGNING_SECRET = os.environ['SLACK_SIGNING_SECRET']
 slack_token = os.environ['SLACK_BOT_TOKEN']
 VERIFICATION_TOKEN = os.environ['VERIFICATION_TOKEN']
 
+if(SLACK_SIGNING_SECRET is None):
+    print('error')
+
 
 slack = WebClient(slack_token)
 
@@ -36,7 +39,7 @@ def event_hook(request):
     return
 
 slack_events_adapter = SlackEventAdapter(
-    os.getenv('SLACK_SIGNING_SECRET'), "/slack/events", App
+    SLACK_SIGNING_SECRET, "/slack/events", App
 )  
 
 @slack_events_adapter.on('app_mention')
