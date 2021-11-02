@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 venv/
 __pycache__/
 .vscode/
 .pytest_cache
+=======
+.env
+venv
+__pycache__/
+>>>>>>> 773cfd3 (hopefully fixed a bug with variables)
