@@ -15,13 +15,13 @@ load_dotenv()
 App=Flask(__name__)
 greetings= {'hi','hello','hope you have a good day'}
 
-#SLACK_SIGNING_SECRET = os.environ['SLACK_SIGNING_SECRET']
-#slack_token = os.environ['SLACK_BOT_TOKEN']
-#VERIFICATION_TOKEN = os.environ['VERIFICATION_TOKEN']
+SLACK_SIGNING_SECRET = os.environ['SLACK_SIGNING_SECRET']
+slack_token = os.environ['SLACK_BOT_TOKEN']
+VERIFICATION_TOKEN = os.environ['VERIFICATION_TOKEN']
 
-SLACK_SIGNING_SECRET = os.getenv('SLACK_SIGNING_SECRET')
-slack_token = os.getenv('SLACK_BOT_TOKEN')
-VERIFICATION_TOKEN = os.getenv('VERIFICATION_TOKEN')
+#SLACK_SIGNING_SECRET = os.getenv('SLACK_SIGNING_SECRET')
+#slack_token = os.getenv('SLACK_BOT_TOKEN')
+#VERIFICATION_TOKEN = os.getenv('VERIFICATION_TOKEN')
 
 
 slack = WebClient(slack_token)
@@ -63,6 +63,9 @@ def handle_message(event_data):
 
 
 
+@App.route('/')
+def index():
+    return "<h1>Welcome to our server !!</h1>"
 
 
 
