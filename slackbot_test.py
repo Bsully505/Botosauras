@@ -1,6 +1,7 @@
 from slackbot import SlackBot
 import requests
 
+
 # This is the webhook that allows us to post to #general in SER300 Slack
 URL = "[WEBHOOK]"
 
