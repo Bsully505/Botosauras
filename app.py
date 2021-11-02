@@ -7,27 +7,16 @@ import json
 import random
 app = Flask(__name__)
 
-@app.route('/roll20/', methods=['GET','POST'])
+@app.route('/roll20/', methods=['GET','POST'])#the way that the slash commands work for slack app is that it is a post command thtat why it is included
 def respond():
-    # Retrieve the name from url parameter
-    
-
-    # For debugging
-
-    
-    response = {}
-
-    response["MESSAGE"] = "Your roll has landed and it has landed on "+ str((random.random()*19)+1)
-
-
-    # Return the response in json format
-    return jsonify(response)
+    # Return the response in string format
+    return "Your roll has landed and it has landed on "+ str(int((random.random()*19)+1))
 
 
 
 
 
-
+#challenge post 
 @app.route('/', methods=['POST'])
 def post_challenge():
     param = request.get_json()
