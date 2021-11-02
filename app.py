@@ -19,8 +19,6 @@ SLACK_SIGNING_SECRET = os.environ['SLACK_SIGNING_SECRET']
 slack_token = os.environ['SLACK_BOT_TOKEN']
 VERIFICATION_TOKEN = os.environ['VERIFICATION_TOKEN']
 
-if(SLACK_SIGNING_SECRET is None):
-    print('error')
 
 
 slack = WebClient(slack_token)
@@ -44,8 +42,6 @@ slack_events_adapter = SlackEventAdapter(
 
 @slack_events_adapter.on('app_mention')
 def handle_message(event_data):
-    slack.chat_postMessage(channel='random', text='message')
-    print('reaches here')
     def send_reply(value):
         event_data = value
         message = event_data["event"]
