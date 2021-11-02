@@ -1,4 +1,5 @@
 # app.py
+
 from flask import Flask, request, jsonify
 app = Flask(__name__)
 
@@ -25,14 +26,30 @@ def respond():
     # Return the response in json format
     return jsonify(response)
 
-@app.route('/post/', methods=['POST'])
-def post_something():
-    param = request.form.get('name')
+#@app.route('/post/', methods=['POST'])
+#def post_something():
+ #   param = request.form.get('name')
+  #  print(param)
+   # # You can add the test cases you made in the previous function, but in our case here you are just testing the POST functionality
+    #if param:
+     #   return jsonify({
+      #      "Message": f"Welcome {name} to our awesome platform!!",
+       #     # Add this option to distinct the POST request
+        #    "METHOD" : "POST"
+        #})
+    #else:
+    #    return jsonify({
+    #        "ERROR": "no name found, please send a name."
+    #    })
+
+@app.route('/', methods=['POST'])
+def post_challenge():
+    param = request.form.get('challenge')
     print(param)
     # You can add the test cases you made in the previous function, but in our case here you are just testing the POST functionality
     if param:
         return jsonify({
-            "Message": f"Welcome {name} to our awesome platform!!",
+            "Message": param,
             # Add this option to distinct the POST request
             "METHOD" : "POST"
         })
