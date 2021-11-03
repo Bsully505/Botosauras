@@ -47,23 +47,31 @@ slack_events_adapter = SlackEventAdapter(
     SLACK_SIGNING_SECRET, endpoint= "/slack/events"
 )  
 
-@slack_events_adapter.on('app_mention')
-def handle_message(event_data):
-    def send_reply(value):
-        event_data = value
-        message = event_data["event"]
-        if message.get("subtype") is None:
-            command = message.get("text")
-            channel_id = message["channel"]
-            if any(item in command.lower() for item in greetings):
-                message = (
-                    "Hello <@%s>! :tada:"
-                    % message["user"]  # noqa
-                )
-                SlackWeb.chat_postMessage(channel=channel_id, text=message)
-    thread = Thread(target=send_reply, kwargs={"value": event_data})
-    thread.start()
-    return Response(status=200)
+@slack_events_adapter.on("app_mention")
+def handle_mentions(event_data):
+    event = event_data["event"]
+    SlackWeb.chat_postMessage(
+        channel=event["channel"],
+        text=f"You said:\n>{event['text']}",
+    )
+
+#@slack_events_adapter.on('app_mention')
+#def handle_message(event_data):
+#    def send_reply(value):
+#        event_data = value
+#        message = event_data["event"]
+#        if message.get("subtype") is None:
+#            command = message.get("text")
+#            channel_id = message["channel"]
+#            if any(item in command.lower() for item in greetings):
+#                message = (
+#                    "Hello <@%s>! :tada:"
+#                    % message["user"]  # noqa
+#                )
+#                SlackWeb.chat_postMessage(channel=channel_id, text=message)
+#    thread = Thread(target=send_reply, kwargs={"value": event_data})
+#    thread.start()
+#    return Response(status=200)
 
 
 
