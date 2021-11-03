@@ -3,7 +3,7 @@ import time
 import re
 from slackeventsapi import SlackEventAdapter
 from threading import Thread
-from slack import WebClient
+import slack
 from flask import Flask, Response
 from dotenv import load_dotenv
 
@@ -24,7 +24,7 @@ VERIFICATION_TOKEN = os.environ['VERIFICATION_TOKEN']
 #VERIFICATION_TOKEN = os.getenv('VERIFICATION_TOKEN')
 
 
-slack = WebClient(slack_token)
+SlackWeb = slack.WebClient(slack_token)
 
 @App.route("/")
 def event_hook(request):
@@ -56,9 +56,9 @@ def handle_message(event_data):
                     "Hello <@%s>! :tada:"
                     % message["user"]  # noqa
                 )
-                slack.chat_postMessage(channel=channel_id, text=message)
-    #thread = Thread(target=send_reply, kwargs={"value": event_data})
-    #thread.start()
+                SlackWeb.chat_postMessage(channel=channel_id, text=message)
+    thread = Thread(target=send_reply, kwargs={"value": event_data})
+    thread.start()
     return Response(status=200)
 
 
