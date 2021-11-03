@@ -31,7 +31,7 @@ SlackWeb = WebClient(slack_token)
 
 @App.route('/', methods=['POST'])
 def event_hook():
-    json_dict = json.loads(request.body.decode("utf-8"))
+    json_dict = request.get_json()
     if json_dict["token"] != VERIFICATION_TOKEN:
         return {"status": 403}
 
