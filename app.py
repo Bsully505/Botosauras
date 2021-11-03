@@ -4,7 +4,7 @@ import re
 from slackeventsapi import SlackEventAdapter
 from threading import Thread
 from slack_sdk import WebClient
-from flask import Flask, Response
+from flask import Flask, Response,request
 from dotenv import load_dotenv
 import json
 
