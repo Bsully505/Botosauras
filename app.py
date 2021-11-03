@@ -26,7 +26,9 @@ VERIFICATION_TOKEN = os.environ['VERIFICATION_TOKEN']
 
 SlackWeb = WebClient(slack_token)
 
-@App.route("/")
+
+
+@App.route("/",methods=['POST'])
 def event_hook(request):
     json_dict = json.loads(request.body.decode("utf-8"))
     if json_dict["token"] != VERIFICATION_TOKEN:
@@ -40,7 +42,7 @@ def event_hook(request):
     return
 
 slack_events_adapter = SlackEventAdapter(
-    SLACK_SIGNING_SECRET, "/slack/events", App
+    SLACK_SIGNING_SECRET, endpoint= "/slack/events"
 )  
 
 @slack_events_adapter.on('app_mention')
