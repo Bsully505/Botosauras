@@ -71,7 +71,7 @@ def index():
 
 
 if __name__ == "__main__":
-    slack.chat_postMessage(channel='#random', text='message')
+    SlackWeb.chat_postMessage(channel='#random', text='message')
     App.run(port=3000)
     
 
