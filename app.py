@@ -3,7 +3,7 @@ import time
 import re
 from slackeventsapi import SlackEventAdapter
 from threading import Thread
-import slack
+from slack_sdk import WebClient
 from flask import Flask, Response
 from dotenv import load_dotenv
 
@@ -24,7 +24,7 @@ VERIFICATION_TOKEN = os.environ['VERIFICATION_TOKEN']
 #VERIFICATION_TOKEN = os.getenv('VERIFICATION_TOKEN')
 
 
-SlackWeb = slack.WebClient(slack_token)
+SlackWeb = WebClient(slack_token)
 
 @App.route("/")
 def event_hook(request):
