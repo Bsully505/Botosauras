@@ -6,6 +6,7 @@ from threading import Thread
 from slack_sdk import WebClient
 from flask import Flask, Response,request
 from dotenv import load_dotenv
+from DiceRoller import DiceRoller
 import json
 
 
@@ -14,7 +15,6 @@ import json
 load_dotenv()
 
 App=Flask(__name__)
-greetings= {'hi','hello','hope you have a good day'}
 
 #SLACK_SIGNING_SECRET = os.environ['SLACK_SIGNING_SECRET']
 #slack_token = os.environ['SLACK_BOT_TOKEN']
@@ -62,29 +62,21 @@ def event_hook_if_starting_base():
 
 @slack_events_adapter.on("app_mention")
 def handle_mentions(event_data):
+    #Parse thought the line to determine what the bot has to do 
     event = event_data["event"]
-    SlackWeb.chat_postMessage(
+    if('!' in event['text']):
+        resultval = DiceRoller.getRoll(DiceRoller,event['text'])
+        SlackWeb.chat_postMessage(
+        channel=event["channel"],
+        text=f"Your roll lands on {resultval}",
+        )
+    else:
+        SlackWeb.chat_postMessage(
         channel=event["channel"],
         text=f"You said:\n>{event['text']}",
-    )
+        )
 
-#@slack_events_adapter.on('app_mention')
-#def handle_message(event_data):
-#    def send_reply(value):
-#        event_data = value
-#        message = event_data["event"]
-#        if message.get("subtype") is None:
-#            command = message.get("text")
-#            channel_id = message["channel"]
-#            if any(item in command.lower() for item in greetings):
-#                message = (
-#                    "Hello <@%s>! :tada:"
-#                    % message["user"]  # noqa
-#                )
-#                SlackWeb.chat_postMessage(channel=channel_id, text=message)
-#    thread = Thread(target=send_reply, kwargs={"value": event_data})
-#    thread.start()
-#    return Response(status=200)
+
 
 
 
