@@ -16,20 +16,20 @@ load_dotenv()
 App=Flask(__name__)
 greetings= {'hi','hello','hope you have a good day'}
 
-SLACK_SIGNING_SECRET = os.environ['SLACK_SIGNING_SECRET']
-slack_token = os.environ['SLACK_BOT_TOKEN']
-VERIFICATION_TOKEN = os.environ['VERIFICATION_TOKEN']
+#SLACK_SIGNING_SECRET = os.environ['SLACK_SIGNING_SECRET']
+#slack_token = os.environ['SLACK_BOT_TOKEN']
+#VERIFICATION_TOKEN = os.environ['VERIFICATION_TOKEN']
 
-#SLACK_SIGNING_SECRET = os.getenv('SLACK_SIGNING_SECRET')
-#slack_token = os.getenv('SLACK_BOT_TOKEN')
-#VERIFICATION_TOKEN = os.getenv('VERIFICATION_TOKEN')
+SLACK_SIGNING_SECRET = os.getenv('SLACK_SIGNING_SECRET')
+slack_token = os.getenv('SLACK_BOT_TOKEN')
+VERIFICATION_TOKEN = os.getenv('VERIFICATION_TOKEN')
+slack_events_adapter = SlackEventAdapter(
+    SLACK_SIGNING_SECRET, '/slack/events',App)  
 
 
 SlackWeb = WebClient(slack_token)
 
-
-
-@App.route('/', methods=['POST'])
+@App.route('/slack/events', methods=['POST'])
 def event_hook():
     
     json_dict = request.get_json()
@@ -43,9 +43,22 @@ def event_hook():
     return {"status": 500}
     return
 
-slack_events_adapter = SlackEventAdapter(
-    SLACK_SIGNING_SECRET, endpoint= "/slack/events"
-)  
+
+@App.route('/', methods=['POST'])
+def event_hook_if_starting_base():
+    
+    json_dict = request.get_json()
+    if json_dict["token"] != VERIFICATION_TOKEN:
+        return {"status": 403}
+
+    if "type" in json_dict:
+        if json_dict["type"] == "url_verification":
+            response_dict = {"challenge": json_dict["challenge"]}
+            return response_dict
+    return {"status": 500}
+    return
+
+
 
 @slack_events_adapter.on("app_mention")
 def handle_mentions(event_data):
@@ -77,14 +90,14 @@ def handle_mentions(event_data):
 
 @App.route('/')
 def index():
-    SlackWeb.chat_postMessage(channel='#random', text='message')
+    #SlackWeb.chat_postMessage(channel='#random', text='message')
     return "<h1>Welcome to our server !!</h1>"
 
 
 
 
 if __name__ == "__main__":
-    SlackWeb.chat_postMessage(channel='#random', text='message')
+    #SlackWeb.chat_postMessage(channel='#random', text='message')
     App.run(port=3000)
     
 
