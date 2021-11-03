@@ -31,6 +31,7 @@ SlackWeb = WebClient(slack_token)
 
 @App.route('/', methods=['POST'])
 def event_hook():
+    
     json_dict = request.get_json()
     if json_dict["token"] != VERIFICATION_TOKEN:
         return {"status": 403}
@@ -68,6 +69,7 @@ def handle_message(event_data):
 
 @App.route('/')
 def index():
+    SlackWeb.chat_postMessage(channel='#random', text='message')
     return "<h1>Welcome to our server !!</h1>"
 
 
