@@ -79,7 +79,7 @@ class DiceRoller:
                 total = total +  min(self.whichRoll(self,int(diceSides)),self.whichRoll(self,int(diceSides))) + skill
             else:
                 total = total + (self.whichRoll(self,int(diceSides))+skill)
-        print("RESULT:", total)
+        return total
             
     
     
