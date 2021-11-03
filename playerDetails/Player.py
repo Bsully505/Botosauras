@@ -19,8 +19,7 @@ class Player:
         self.background = ""
         self.alignment = ""
 
-        #Ability Scores (str, dex, etc.)
-        self.abilityScores = Abilities(self)
+        self.abilities = Abilities(self)
 
         #
         self.hitPoints = 0
@@ -39,3 +38,6 @@ class Player:
     # Return an organized 'character sheet' of the player
     def print(self):
         return ""
+
+    def get(self):
+        return 1
