@@ -41,7 +41,8 @@ class DiceRoller:
     def processCommand(self, command):
         #the format of this command should be !(numberofRoles)D(number of sides on dice)A(advnatage or disadvantage or neutral)S(Skills)
         # Removes ! from command and splits at [space-separated] parameters
-        usableCommand = command.split('!')[1].split(' ')
+        usableCommand=command.split(" ",1)[1]
+        #usableCommand = command.split('!')[1].split(' ')
         
         print("COMMAND:", usableCommand)
 
