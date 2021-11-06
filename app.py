@@ -71,7 +71,7 @@ def handle_mentions(event_data):
         #resultval = DiceRoller.getRoll(DiceRoller,event['text'])
         SlackWeb.chat_postMessage(
         channel=event["channel"],
-        text=f"Your roll lands on {resultval}",
+        text=f"Results: {resultval}",
         )
     else:
         SlackWeb.chat_postMessage(
