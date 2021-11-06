@@ -67,7 +67,7 @@ def handle_mentions(event_data):
     event = event_data["event"]
     if('!' in event['text']):
         command = event['text'].split('!')[1]
-        resultval = CommandParser(command)
+        resultval = CommandParser.parse(command)
         #resultval = DiceRoller.getRoll(DiceRoller,event['text'])
         SlackWeb.chat_postMessage(
         channel=event["channel"],
