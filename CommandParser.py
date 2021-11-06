@@ -7,7 +7,7 @@ class CommandParser():
         #command should be in context of !(key command) (parameters)
         key = command.split(' ')[0]
         switcher={
-            'r':DiceRoller.getRoll('!'+command),
+            'r':DiceRoller.processCommand('!'+command),
             'M':RollForDamage.processCommand('!'+command)
         }
         return(switcher.get(key, "Invalid entry"))
