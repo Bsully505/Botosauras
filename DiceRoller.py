@@ -45,7 +45,7 @@ class DiceRoller:
         
         print("COMMAND:", usableCommand)
 
-        diceRoll = usableCommand[0].split('D')
+        diceRoll = usableCommand[1].split('D')
 
         #determine how many roles will happen
         numOfRoles= diceRoll[0]
