@@ -7,6 +7,7 @@ from slack_sdk import WebClient
 from flask import Flask, Response,request
 from dotenv import load_dotenv
 from DiceRoller import DiceRoller
+from CommandParser import CommandParser
 import json
 
 
@@ -65,7 +66,9 @@ def handle_mentions(event_data):
     #Parse thought the line to determine what the bot has to do 
     event = event_data["event"]
     if('!' in event['text']):
-        resultval = DiceRoller.getRoll(DiceRoller,event['text'])
+        command = event['text'].split('!')[1]
+        resultval = CommandParser(command)
+        #resultval = DiceRoller.getRoll(DiceRoller,event['text'])
         SlackWeb.chat_postMessage(
         channel=event["channel"],
         text=f"Your roll lands on {resultval}",
