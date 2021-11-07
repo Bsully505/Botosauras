@@ -52,10 +52,9 @@ class RollForDamage:
             print("DICE SIDES:", diceSides)
 
             sum = 0
-            for i in range(int(numOfRoles)):
- 	              sum += self.pickDiceRoller(int(diceSides))
-
+            for i in range(0,int(numOfRoles)):
+                    print('Is running')
+                    sum += self.pickDiceRoller(int(diceSides))
             return sum
-
         except:
             return "Invalid entry"
