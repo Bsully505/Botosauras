@@ -24,14 +24,14 @@ class RollForDamage:
     #checking cases to roll the dice with the corresponing number of sides
     def pickDiceRoller(self,numOfSides):
         switcher= {
-            20: self.roll20(),
-            12: self.roll12(),
-            10: self.roll10(),
-            8: self.roll8(),
-            6: self.roll6(),
-            4: self.roll4(),
+            20:lambda: self.roll20(),
+            12:lambda: self.roll12(),
+            10:lambda: self.roll10(),
+            8:lambda: self.roll8(),
+            6:lambda: self.roll6(),
+            4:lambda: self.roll4(),
         }
-        return switcher.get(numOfSides, "Invalid entry")
+        return switcher.get(numOfSides, "Invalid entry")()
 
     def processCommand(self, command):
         #the format of this command should be !M (numberofRoles)D(number of sides on dice)
@@ -54,7 +54,7 @@ class RollForDamage:
             sum = 0
             for i in range(0,int(numOfRoles)):
                     print('Is running')
-                    sum += self.pickDiceRoller(int(diceSides))
+                    sum += int(self.pickDiceRoller(int(diceSides)))
             return sum
         except:
             return "Invalid entry"
