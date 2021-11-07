@@ -34,14 +34,14 @@ class RollForDamage:
         return switcher.get(numOfSides, "Invalid entry")
 
     def processCommand(self, command):
-        #the format of this command should be !(numberofRoles)M(number of sides on dice)
+        #the format of this command should be !M (numberofRoles)D(number of sides on dice)
         # Removes ! from command and splits at [space-separated] parameters
-        usableCommand = command.split('!')[1]
+        usableCommand = command.split('!')[1].split(' ')
 
         print("COMMAND:", usableCommand)
 
         if usableCommand.find('M') != -1:
-            diceRoll = usableCommand.split('M')
+            diceRoll = usableCommand.split('D')
 
             #determine how many roles will happen
             numOfRoles= diceRoll[0]
