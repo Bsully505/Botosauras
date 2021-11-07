@@ -9,11 +9,11 @@ class CommandParser():
         #command should be in context of !(key command) (parameters)
         key = command.split(' ')[0].upper()
         switcher={
-            'r':lambda: DiceRoller.getRoll(DiceRoller,'!'+command),
-            'M':lambda: RollForDamage.processCommand(RollForDamage,'!M '+command),
+            'R':lambda: DiceRoller.getRoll(DiceRoller,'!'+command),
+            'M':lambda: RollForDamage.processCommand(RollForDamage,'! '+command),
             'A':lambda: CriticalAttack.Attackroll(CriticalAttack),
             'H':lambda: Help.getHelp()
         }
-        return(switcher.get(key, "You did not enter a correct command type !H to get commands")())
+        return(switcher.get(key, lambda:"You did not enter a correct command type !H to get commands")())
 
         
