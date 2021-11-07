@@ -31,7 +31,9 @@ class RollForDamage:
             6:lambda: self.roll6(),
             4:lambda: self.roll4(),
         }
-        return switcher.get(numOfSides, "Invalid entry")()
+        val = switcher.get(numOfSides, "Invalid entry")()
+        print(val)
+        return val
 
     def processCommand(self, command):
         #the format of this command should be !M (numberofRoles)D(number of sides on dice)
