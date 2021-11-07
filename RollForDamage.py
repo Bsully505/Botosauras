@@ -52,8 +52,8 @@ class RollForDamage:
             print("DICE SIDES:", diceSides)
 
             sum = 0
-            for i in range(numOfRoles):
- 	              sum += self.pickDiceRoller(diceSides)
+            for i in range(int(numOfRoles)):
+ 	              sum += self.pickDiceRoller(int(diceSides))
 
             return sum
 
