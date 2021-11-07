@@ -14,6 +14,6 @@ class CommandParser():
             'A':lambda: CriticalAttack.Attackroll(CriticalAttack),
             'H':lambda: Help.getHelp()
         }
-        return(switcher.get(key, "You did not enter a correct command type !H to get commands"))
+        return(switcher.get(key, "You did not enter a correct command type !H to get commands")())
 
         
