@@ -44,7 +44,7 @@ class RollForDamage:
             diceRoll = usableCommand.split('D')
 
             #determine how many roles will happen
-            numOfRoles= diceRoll[0]
+            numOfRoles= diceRoll[0].split(' ')[1]
             print("# ROLLS:", numOfRoles)
 
             #obtain the type of dice used
