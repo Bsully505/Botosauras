@@ -43,22 +43,21 @@ class RollForDamage:
 
         print("COMMAND:", usableCommand)
 
-        try:
-            diceRoll = usableCommand.split('D')
+      
+        diceRoll = usableCommand.split('D')
 
-            #determine how many roles will happen
-            numOfRoles= diceRoll[0].split(' ')[1]
-            print("# ROLLS:", numOfRoles)
+        #determine how many roles will happen
+        numOfRoles= diceRoll[0].split(' ')[1]
+        print("# ROLLS:", numOfRoles)
 
-            #obtain the type of dice used
-            diceSides = diceRoll[1]
-            print("DICE SIDES:", diceSides)
+        #obtain the type of dice used
+        diceSides = diceRoll[1]
+        print("DICE SIDES:", diceSides)
 
-            sum = 0
-            for i in range(0,int(numOfRoles)):
-                    print('Is running')
-                    print(int(diceSides))
-                    sum += (self.pickDiceRoller(int(diceSides)))
-            return sum
-        except:
-            return "Invalid entry"
+        sum = 0
+        for i in range(0,int(numOfRoles)):
+                print('Is running')
+                print(int(diceSides))
+                sum += (self.pickDiceRoller(int(diceSides)))
+        return sum
+   
