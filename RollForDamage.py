@@ -51,7 +51,7 @@ class RollForDamage:
         print("# ROLLS:", numOfRoles)
 
         #obtain the type of dice used
-        diceSides = diceRoll[1]
+        diceSides = diceRoll[1].split(' ')[0]
         print("DICE SIDES:", diceSides)
 
         sum = 0
