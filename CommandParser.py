@@ -7,10 +7,10 @@ from CriticalAttack import CriticalAttack
 class CommandParser():
     def parse(command):
         #command should be in context of !(key command) (parameters)
-        key = command.split(' ')[0]
+        key = command.split(' ')[0].toUpperCase()
         switcher={
             'r':lambda: DiceRoller.getRoll(DiceRoller,'!'+command),
-            'M':lambda: RollForDamage.processCommand(RollForDamage,'!'+command),
+            'M':lambda: RollForDamage.processCommand(RollForDamage,'!M'+command),
             'A':lambda: CriticalAttack.Attackroll(CriticalAttack),
             'H':lambda: Help.getHelp()
         }
