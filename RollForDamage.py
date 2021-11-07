@@ -31,6 +31,7 @@ class RollForDamage:
             6:lambda: self.roll6(),
             4:lambda: self.roll4(),
         }
+        
         val = switcher.get(numOfSides, "Invalid entry")()
         print(val)
         return val
@@ -56,7 +57,8 @@ class RollForDamage:
             sum = 0
             for i in range(0,int(numOfRoles)):
                     print('Is running')
-                    sum += int(self.pickDiceRoller(int(diceSides)))
+                    print(int(diceSides))
+                    sum += (self.pickDiceRoller(int(diceSides)))
             return sum
         except:
             return "Invalid entry"
