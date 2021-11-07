@@ -36,7 +36,7 @@ class RollForDamage:
     def processCommand(self, command):
         #the format of this command should be !M (numberofRoles)D(number of sides on dice)
         # Removes ! from command and splits at [space-separated] parameters
-        usableCommand = command.split('!')[1].split(' ')
+        usableCommand = command.split('!')[1].split(' ')[1]
 
         print("COMMAND:", usableCommand)
 

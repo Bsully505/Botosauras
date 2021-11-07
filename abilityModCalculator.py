@@ -4,4 +4,8 @@ import math
 
 
 def _getModifier(abilityScore):
+<<<<<<< HEAD
     return math.floor((abilityScore - 10)/2)
+=======
+    return math.floor((abilityScore - 10)/2)
+>>>>>>> 8cf970c (update)
