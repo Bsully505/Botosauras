@@ -58,6 +58,6 @@ class RollForDamage:
         for i in range(0,int(numOfRoles)):
                 print('Is running')
                 print(int(diceSides))
-                sum += (self.pickDiceRoller(int(diceSides)))
+                sum += (self.pickDiceRoller(self,int(diceSides)))
         return sum
    
