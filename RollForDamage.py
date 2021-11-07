@@ -40,8 +40,8 @@ class RollForDamage:
 
         print("COMMAND:", usableCommand)
 
-        if usableCommand.find('M') != -1:
-            diceRoll = usableCommand.split('D')
+        if usableCommand[0] == 'M':
+            diceRoll = usableCommand[1].split('D')
 
             #determine how many roles will happen
             numOfRoles= diceRoll[0]
