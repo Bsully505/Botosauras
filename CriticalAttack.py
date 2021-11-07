@@ -16,6 +16,7 @@ class CriticalAttack:
             print("total value is : " + str(total))
             if(roll != 20):
                 critical = False
+        return str(critical)
 if (__name__ == "__main__"):
     #+2 will be replaced with a skill that will then be used to calculate the bonus to be added
     CriticalAttack.Attackroll(CriticalAttack)
