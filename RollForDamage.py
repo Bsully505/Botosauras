@@ -40,7 +40,7 @@ class RollForDamage:
 
         print("COMMAND:", usableCommand)
 
-        if usableCommand.find('M') != -1:
+        try:
             diceRoll = usableCommand.split('D')
 
             #determine how many roles will happen
@@ -57,5 +57,5 @@ class RollForDamage:
 
             return sum
 
-        else:
+        except:
             return "Invalid entry"

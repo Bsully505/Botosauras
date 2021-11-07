@@ -10,7 +10,7 @@ class CommandParser():
         key = command.split(' ')[0].upper()
         switcher={
             'r':lambda: DiceRoller.getRoll(DiceRoller,'!'+command),
-            'M':lambda: RollForDamage.processCommand(RollForDamage,'!M'+command),
+            'M':lambda: RollForDamage.processCommand(RollForDamage,'!M '+command),
             'A':lambda: CriticalAttack.Attackroll(CriticalAttack),
             'H':lambda: Help.getHelp()
         }
