@@ -60,6 +60,11 @@ def event_hook_if_starting_base():
     return
 
 
+@App.route('/InputChar', methods=['POST'])
+def characterCreation():
+    json_dict = request.get_json()
+    
+
 
 @slack_events_adapter.on("app_mention")
 def handle_mentions(event_data):
