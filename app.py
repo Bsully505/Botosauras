@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 from DiceRoller import DiceRoller
 from CommandParser import CommandParser
 import json
+from playerDetails.Player import Player
 
 
 
@@ -58,6 +59,19 @@ def event_hook_if_starting_base():
             return response_dict
     return {"status": 500}
     return
+
+@App.route('/PostChar', methods=['POST'])
+def PostCharStats():
+    try:
+        json_dict = request.get_json()
+        is_dm = json_dict["type"]
+        User = json_dict["User"]
+        player = Player(is_dm,User)
+        return {"status": 200}
+    except:
+        return{"status": 400}
+    
+
 
 
 
