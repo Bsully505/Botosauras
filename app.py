@@ -64,12 +64,22 @@ def event_hook_if_starting_base():
 
 @App.route('/PostChar', methods=['POST'])
 def PostCharStats():
+    val =400
     try:
         json_dict = request.get_json()
-        is_dm = json_dict["type"]
-        User = json_dict["User"]
-        player = Player(is_dm,User)
-        players.append(player.user)
+        try:
+            is_dm = json_dict["type"]
+            val= 401
+            User = json_dict["User"]
+        except:
+            return {"status": val}
+        try:
+            val = 402
+            player = Player(is_dm,User)
+            val = 403
+            players.append(player.user)
+        except:
+            return {"status": val}
         return {"status": 200}
     except:
         return{"status": 400}
