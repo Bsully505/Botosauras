@@ -15,6 +15,8 @@ from playerDetails.Player import Player
 
 # instantiate Slack client
 load_dotenv()
+global players 
+players = []
 
 App=Flask(__name__)
 
@@ -67,6 +69,7 @@ def PostCharStats():
         is_dm = json_dict["type"]
         User = json_dict["User"]
         player = Player(is_dm,User)
+        players.append(player.user)
         return {"status": 200}
     except:
         return{"status": 400}
