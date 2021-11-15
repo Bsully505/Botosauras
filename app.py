@@ -83,7 +83,14 @@ def PostCharStats():
         return {"status": 200}
     except:
         return{"status": 400}
-    
+
+@App.route('/PrintPlayers',methods = ['GET'])
+def PrintPlayer():
+    val = " "
+    for i in players:
+        val = val + i
+    return "<h1>{val}</h1>"
+        
 
 
 
