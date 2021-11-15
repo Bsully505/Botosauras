@@ -89,7 +89,8 @@ def PrintPlayer():
     val = " "
     for i in players:
         val = val + i
-    return "<h1>{val}</h1>"
+    print(val)
+    return f"<h1>{val}</h1>"
         
 
 
