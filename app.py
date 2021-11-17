@@ -82,7 +82,7 @@ def PostCharStats():
     for i in players:
         val = val +" and " +i
 
-    return {"Players": val}
+    return {"Players": players}
    # except:
      #   return{"status": val1}
 
