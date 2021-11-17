@@ -16,8 +16,8 @@ class Abilities:
         for i in data['characters']:
 
             print(i)
-        
-            f.close()
+            
+        f.close()
 
 def main(self):
     self.parseFile()
