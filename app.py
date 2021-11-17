@@ -78,7 +78,7 @@ def PostCharStats():
             val = 402
             player = Player(is_dm,User)
             val = 403
-            players.append(player.user)
+            players.append(player)
         except:
             return {"status": val}
         return {"status": 200}
@@ -91,6 +91,7 @@ def PrintPlayer():
     for i in players:
         val = val +" " +i
         print(val)
+        
     return f"<h1>{val}</h1>"
         
 
@@ -123,28 +124,6 @@ def index():
     #SlackWeb.chat_postMessage(channel='#random', text='message')
     return "<h1>Welcome to our server !!</h1>"
 
-@slack_events_adapter.on("message")
-def handle_message(event_data):
-    message = event_data["event"]
-    print("reaches here")
-    # If the incoming message contains "hi", then respond with a "Hello" message
-    if message.get("subtype") is None and "!insert Player" in message.get('text'):
-        mes = message.get('text').split(" ")
-        if(mes.size>3):
-            isDm = False
-            if(mes[2].upper() == "TRUE"):
-                isDm = True
-            data = {"type"}
-            res =requests.post(url+'PostChar', json= {"type":isDm,"User":mes[3]})
-            SlackWeb.chat_postMessage(
-        channel=event_data["channel"],
-        text=res.status_code,
-        )
-        else:
-            SlackWeb.chat_postMessage(
-        channel=event_data["channel"],
-        text=f"You did not enter a correct command type !H to get commands",
-        )
 
 
 if __name__ == "__main__":

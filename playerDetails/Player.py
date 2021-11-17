@@ -7,6 +7,7 @@ from playerDetails.rolePlayTraits import RolePlayTraits
 
 
 class Player:
+    global user
 
     def __init__(self, _isDM, _user):
         self.user = _user  # Will be used to connect the slack user to the character
