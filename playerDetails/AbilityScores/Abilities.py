@@ -2,6 +2,7 @@ from playerDetails.AbilityScores.AbilityScores import AbilityScores
 from playerDetails.AbilityScores.SavingThrows import SavingThrows
 from playerDetails.AbilityScores.Skills import Skills
 
+
 import json
 
 
@@ -16,7 +17,7 @@ class Abilities:
        
 
     def parseFile(self,_player):
-        f = open('characters.json')
+        f = open('playerDetails/AbilityScores/characters.json')
         dict = {}
         data = json.load(f)
 
