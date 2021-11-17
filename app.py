@@ -89,7 +89,7 @@ def PostCharStats():
 def PrintPlayer():
     val = " "
     for i in players:
-        val = val +" " +i
+        val = val +" and " +i
         print(val)
         
     return f"<h1>{val}</h1>"
