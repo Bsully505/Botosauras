@@ -22,7 +22,7 @@ class Abilities:
         data = json.load(f)
 
         for i in data['characters']:
-            if(i is _player._user):
+            if(i is _player.user):
                 for z in data['characters'][i]:
                         for j in data['characters'][i][z]:
                                 dict[z]= j 
