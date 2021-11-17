@@ -1,7 +1,9 @@
-from playerDetails.AbilityScores import AbilityScores
-from playerDetails.AbilityScores import SavingThrows
-from Player import Player
+from playerDetails.AbilityScores.AbilityScores import AbilityScores
+from playerDetails.AbilityScores.SavingThrows import SavingThrows
+from playerDetails.AbilityScores.Skills import Skills
+from Player import Player 
 import json
+
 
 class Abilities:
     def __init__(self, _player):
@@ -26,5 +28,7 @@ def main(self):
         self.proficiencyBonus = 0
         _player = Player(False,'Sully505')
         self.abilityScores = AbilityScores(_player)
-        self.savingThrows = SavingThrows(self)
         Abilities(self,_player)
+        self.savingThrows = SavingThrows(self)
+        self.skills = Skills(self)
+

@@ -6,8 +6,4 @@ class AbilityScores:
         self.constitution = 0
         self.intelligence = 0
         self.wisdom = 0
-<<<<<<< HEAD
         self.charisma = 0
-=======
-        self.charisma = 0
->>>>>>> 26d9f0e (added Tim's code)
