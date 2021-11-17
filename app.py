@@ -1,6 +1,7 @@
 import os
 import time
 import re
+import requests
 from slackeventsapi import SlackEventAdapter
 from threading import Thread
 from slack_sdk import WebClient
@@ -17,6 +18,7 @@ from playerDetails.Player import Player
 load_dotenv()
 global players 
 players = []
+url = 'https://slackevent.herokuapp.com/'
 
 App=Flask(__name__)
 
@@ -114,6 +116,24 @@ def handle_mentions(event_data):
         )
 
 
+
+@slack_events_adapter.on("message")
+def handle_message(event_data):
+    message = event_data["event"]
+    # If the incoming message contains "hi", then respond with a "Hello" message
+    if message.get("subtype") is None and "!insert Player" in message.get('text'):
+        mes = message.get('text').split(" ")
+        if(mes.size>3):
+            isDm = False
+            if(mes[2].upper() is "TRUE"):
+                isDm = True
+            data = {"type"}
+            requests.post(url+'PostChar', json= {"type":isDm,"User":mes[3]})
+        else:
+            SlackWeb.chat_postMessage(
+        channel=event_data["channel"],
+        text=f"You did not enter a correct command type !H to get commands",
+        )
 
 
 
