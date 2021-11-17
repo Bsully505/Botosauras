@@ -15,7 +15,7 @@ class Abilities:
        self.savingThrows = SavingThrows(self)
        
 
-    def parseFile(_player):
+    def parseFile(self,_player):
         f = open('characters.json')
         dict = {}
         data = json.load(f)
