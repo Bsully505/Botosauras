@@ -131,7 +131,7 @@ def handle_message(event_data):
         mes = message.get('text').split(" ")
         if(mes.size>3):
             isDm = False
-            if(mes[2].upper() is "TRUE"):
+            if(mes[2].upper() == "TRUE"):
                 isDm = True
             data = {"type"}
             res =requests.post(url+'PostChar', json= {"type":isDm,"User":mes[3]})
