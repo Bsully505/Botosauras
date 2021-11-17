@@ -68,7 +68,6 @@ def handle_mentions(event_data):
     if('!' in event['text']):
         command = event['text'].split('!')[1]
         resultval = CommandParser.parse(command)
-        #resultval = DiceRoller.getRoll(DiceRoller,event['text'])
         SlackWeb.chat_postMessage(
         channel=event["channel"],
         text=f"Results: {resultval}",
@@ -76,7 +75,7 @@ def handle_mentions(event_data):
     else:
         SlackWeb.chat_postMessage(
         channel=event["channel"],
-        text=f"You said:\n>{event['text']}",
+        text=f"You did not enter a correct command type !H to get commands",
         )
 
 

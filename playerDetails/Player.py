@@ -40,4 +40,8 @@ class Player:
         return ""
 
     def get(self):
+<<<<<<< HEAD
         return 1
+=======
+        return 1
+>>>>>>> 26d9f0e (added Tim's code)

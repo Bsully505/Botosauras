@@ -8,4 +8,8 @@ class Equipment:
             "electrum": 0,
             "gold": 0,
             "platinum": 0
+<<<<<<< HEAD
         }
+=======
+        }
+>>>>>>> 26d9f0e (added Tim's code)

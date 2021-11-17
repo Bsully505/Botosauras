@@ -11,4 +11,8 @@ class Spell:
         self.school = ""
         self.damageType = ""
         self.components = []
+<<<<<<< HEAD
         self.description = ""
+=======
+        self.description = ""
+>>>>>>> 26d9f0e (added Tim's code)
