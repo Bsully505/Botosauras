@@ -66,25 +66,25 @@ def event_hook_if_starting_base():
 @App.route('/PostChar', methods=['POST'])
 def PostCharStats():
     val1 =400
-    try:
-        json_dict = request.get_json()
-        val1 = val1 +1
+    #try:
+    json_dict = request.get_json()
+    val1 = val1 +1
 
-        is_dm = json_dict["type"]
-        val1 = val1 +1
-        User = json_dict["User"]
-        val1 = val1 +1
-        player = Player(is_dm,User)
-        val1 = val1 +1
-        players.append(player.user)
-        val1 = val1 +1
-        val = ""
-        for i in players:
-            val = val +" and " +i
+    is_dm = json_dict["type"]
+    val1 = val1 +1
+    User = json_dict["User"]
+    val1 = val1 +1
+    player = Player(is_dm,User)
+    val1 = val1 +1
+    players.append(player.user)
+    val1 = val1 +1
+    val = ""
+    for i in players:
+        val = val +" and " +i
 
-        return {"Players": val}
-    except:
-        return{"status": val1}
+    return {"Players": val}
+   # except:
+     #   return{"status": val1}
 
 @App.route('/PrintPlayers',methods = ['GET'])
 def PrintPlayer():
