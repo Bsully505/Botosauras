@@ -126,6 +126,7 @@ def index():
 @slack_events_adapter.on("message")
 def handle_message(event_data):
     message = event_data["event"]
+    print("reaches here")
     # If the incoming message contains "hi", then respond with a "Hello" message
     if message.get("subtype") is None and "!insert Player" in message.get('text'):
         mes = message.get('text').split(" ")
