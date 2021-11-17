@@ -16,7 +16,7 @@ from playerDetails.Player import Player
 
 # instantiate Slack client
 load_dotenv()
-global players 
+
 players = []
 url = 'https://slackevent.herokuapp.com/'
 App=Flask(__name__)
@@ -78,9 +78,6 @@ def PostCharStats():
     val1 = val1 +1
     players.append(player.user)
     val1 = val1 +1
-    val = ""
-    for i in players:
-        val = val +" and " +i
 
     return {"Players": players}
    # except:
