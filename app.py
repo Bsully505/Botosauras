@@ -78,7 +78,7 @@ def PostCharStats():
             val = 402
             player = Player(is_dm,User)
             val = 403
-            players.append(player)
+            players.append(player.user)
         except:
             return {"status": val}
         return {"status": 200}
