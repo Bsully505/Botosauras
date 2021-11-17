@@ -68,20 +68,15 @@ def PostCharStats():
     val =400
     try:
         json_dict = request.get_json()
-        try:
-            is_dm = json_dict["type"]
-            val= 401
-            User = json_dict["User"]
-        except:
-            return {"status": val}
-        try:
-            val = 402
-            player = Player(is_dm,User)
-            val = 403
-            players.append(player.user)
-        except:
-            return {"status": val}
-        return {"status": 200}
+        is_dm = json_dict["type"]
+        User = json_dict["User"]
+        player = Player(is_dm,User)
+        players.append(player.user)
+        val = ""
+        for i in players:
+            val = val +" and " +i
+
+        return {"Players": val}
     except:
         return{"status": 400}
 
