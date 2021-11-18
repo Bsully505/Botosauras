@@ -79,7 +79,7 @@ def PostCharStats():
 @App.route('/PrintPlayers',methods = ['GET'])
 def PrintPlayer():
     val = " "
-    val = TestingChar.GetAllPlayers()
+    val = TestingChar.GetAllPlayers(TestingChar)
         
     return f"<h1> This should be all of your Players {val}</h1>"
         
