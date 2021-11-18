@@ -73,7 +73,7 @@ def PostCharStats():
     player = Player(is_dm,User)
     
 
-    return {"Players": PlayerList.ReturnPlayers()}
+    return {"Player": User}
 
 
 @App.route('/PrintPlayers',methods = ['GET'])
