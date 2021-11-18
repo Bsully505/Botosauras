@@ -18,7 +18,7 @@ from TestingChar import TestingChar
 # instantiate Slack client
 load_dotenv()
 
-PlayerList = Players()
+
 url = 'https://slackevent.herokuapp.com/'
 App=Flask(__name__)
 
