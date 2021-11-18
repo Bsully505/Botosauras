@@ -9,9 +9,9 @@ class Players:
             cls._instance = super(Players, cls).__new__(
                                 cls, *args, **kwargs)
         return cls._instance
-        
+
     def addPlayer(self,PlayerID):
-        self.players.append(PlayerID)
+        players.append(PlayerID)
 
     def ReturnPlayers(self):
-        return self.players
+        return players
