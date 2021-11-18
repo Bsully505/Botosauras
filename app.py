@@ -11,7 +11,7 @@ from CommandParser import CommandParser
 import json
 import requests
 from playerDetails.Player import Player
-from ListOfPlayers import Players
+from TestingChar import TestingChar
 
 
 
@@ -71,8 +71,7 @@ def PostCharStats():
     is_dm = json_dict["type"]
     User = json_dict["User"]
     player = Player(is_dm,User)
-    PlayerList.addPlayer(player.user)
-
+    
 
     return {"Players": PlayerList.ReturnPlayers()}
 
@@ -80,9 +79,7 @@ def PostCharStats():
 @App.route('/PrintPlayers',methods = ['GET'])
 def PrintPlayer():
     val = " "
-    for i in Players.ReturnPlayers():
-        val = val +" and " +i
-        print(val)
+    val = TestingChar.GetAllPlayers()
         
     return f"<h1> This should be all of your Players {val}</h1>"
         
