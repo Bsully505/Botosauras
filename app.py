@@ -9,15 +9,17 @@ from dotenv import load_dotenv
 from DiceRoller import DiceRoller
 from CommandParser import CommandParser
 import json
+import requests
 from playerDetails.Player import Player
+from TestingChar import TestingChar
 
 
 
 # instantiate Slack client
 load_dotenv()
-global players 
-players = []
 
+
+url = 'https://slackevent.herokuapp.com/'
 App=Flask(__name__)
 
 #SLACK_SIGNING_SECRET = os.environ['SLACK_SIGNING_SECRET']
@@ -64,33 +66,22 @@ def event_hook_if_starting_base():
 
 @App.route('/PostChar', methods=['POST'])
 def PostCharStats():
-    val =400
-    try:
-        json_dict = request.get_json()
-        try:
-            is_dm = json_dict["type"]
-            val= 401
-            User = json_dict["User"]
-        except:
-            return {"status": val}
-        try:
-            val = 402
-            player = Player(is_dm,User)
-            val = 403
-            players.append(player.user)
-        except:
-            return {"status": val}
-        return {"status": 200}
-    except:
-        return{"status": 400}
+
+    json_dict = request.get_json()
+    is_dm = json_dict["type"]
+    User = json_dict["User"]
+    player = Player(is_dm,User)
+    
+
+    return {"Player": User}
+
 
 @App.route('/PrintPlayers',methods = ['GET'])
 def PrintPlayer():
     val = " "
-    for i in players:
-        val = val +" " +i
-        print(val)
-    return f"<h1>{val}</h1>"
+    val = TestingChar.GetAllPlayers(TestingChar)
+        
+    return f"<h1> This should be all of your Players {val}</h1>"
         
 
 
@@ -121,7 +112,6 @@ def handle_mentions(event_data):
 def index():
     #SlackWeb.chat_postMessage(channel='#random', text='message')
     return "<h1>Welcome to our server !!</h1>"
-
 
 
 
