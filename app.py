@@ -71,7 +71,7 @@ def PostCharStats():
     is_dm = json_dict["type"]
     User = json_dict["User"]
     player = Player(is_dm,User)
-    PlayerList.addPlayer(player)
+    PlayerList.addPlayer(player.user)
 
 
     return {"Players": PlayerList.ReturnPlayers()}
