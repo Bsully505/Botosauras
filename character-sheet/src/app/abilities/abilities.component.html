@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2" *ngFor="let ability of abilities; let index = index; trackBu:trackByIndex;">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{calculateModifier(ability.score)}}</h5>
+                    <p class="card-text">{{ability.name}}</p>
+                    <input type="text" class="form-control text-center" id="{{ability.score}}" value={{ability.score}}
+                        [disabled]="!isEditing" [(ngModel)]="abilities[index].score">
+                </div>
+            </div>
+        </div>
+        <!-- <p>{{abilities |json}}</p> -->
+    </div>

@@ -40,4 +40,7 @@ class Player:
         return ""
 
     def get(self):
-        return 1
+        return {
+            "user": self.user,
+            "abilities": self.abilities.abilityScores.get(),
+        }
