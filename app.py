@@ -84,6 +84,11 @@ def PrintPlayer():
     return f"<h1> This should be all of your Players {val}</h1>"
         
 
+@App.route('/players/<user>', methods=['GET'])
+def getAbilitiesGivenUser():
+    user = request.args.get("username")
+    player = TestingChar.findPlayer(user)
+    return player.get()
 
 
 
