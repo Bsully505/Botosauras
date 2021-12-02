@@ -69,83 +69,82 @@ class Character:
             return "Male"
         
     def RaceAbilityModifier(self,race,AbilityDict):
-        match race:
-            case 'Dragonborn':
-                AbilityDict['Strength'] =  AbilityDict['Strength'] +2
-                AbilityDict['Charisma'] = AbilityDict['Charisma']+1
-                self.Speed = 30
-                self.Size = "Medium"
-                self.Age = random.randint(15,70)
-                self.Languages = ['Common','Draconic']
-                return AbilityDict    
-            case 'Dwarf':
-                AbilityDict['Constitution'] =  AbilityDict['Constitution'] +2
-                self.Speed = 25
-                self.Size = "Medium"
-                self.Age = random.randint(50,300)
-                self.Languages = ['Common','Dwarvish']
-                return AbilityDict
-            case 'Elf':
-                AbilityDict['Dexterity'] =  AbilityDict['Dexterity'] +2
-                self.Speed = 30
-                self.Size = "Medium"
-                self.Age = random.randint(100,725)
-                self.Languages = ['Common','Elvish']
-                return AbilityDict
-            case 'Gnome':
-                AbilityDict['Intelligence'] =  AbilityDict['Intelligence'] +2
-                self.Speed = 25
-                self.Size = "Small"
-                self.Age = random.randint(50,375)
-                self.Languages = ['Common','Gnomish']
-                ##subsRace Deep Gnome, Rock Gnome
-                return AbilityDict
-            case 'Half-Elf':
-                AbilityDict['Charisma'] =  AbilityDict['Charisma'] +2
-                adjuster1 = self.getRandomAbility("Charisma")
-                AbilityDict[adjuster1] = AbilityDict[adjuster1] +1
-                adjuster2 = self.getRandomAbility("Charisma")
-                AbilityDict[adjuster2] = AbilityDict[adjuster2] +1
-                self.Speed = 30
-                self.Size = "Medium"
-                self.Age = random.randint(20,150)
-                self.Languages = ['Common','Elvish']
-                return AbilityDict
-            case 'Halfling':
-                AbilityDict['Dexterity'] =  AbilityDict['Dexterity'] +2
-                self.Speed = 25
-                self.Size = "Small"
-                self.Age = random.randint(20,120)
-                self.Languages = ['Common','Halfling']                
-                return AbilityDict
-            case 'Half-Orc':
-                AbilityDict['Strength'] =  AbilityDict['Strength'] +2
-                AbilityDict['Constitution'] =  AbilityDict['Constitution'] +1
-                self.Speed = 30
-                self.Size = "Medium"
-                self.Age = random.randint(15,60)
-                self.Languages = ['Common','Orc']                
-                return AbilityDict
-            case 'Human':
-                AbilityDict['Strength'] =  AbilityDict['Strength'] +1
-                AbilityDict['Dexterity'] =  AbilityDict['Dexterity'] +1
-                AbilityDict['Constitution'] =  AbilityDict['Constitution'] +1
-                AbilityDict['Wisdom'] =  AbilityDict['Wisdom'] +1
-                AbilityDict['Intelligence'] =  AbilityDict['Intelligence'] +1
-                AbilityDict['Charisma'] =  AbilityDict['Charisma'] +1
-                self.Speed = 30
-                self.Size = "Medium"
-                self.Age = random.randint(18,80)
-                self.Languages = ['Common']                
-                return AbilityDict
-            case 'Tiefling':
-                AbilityDict['Intelligence'] =  AbilityDict['Intelligence'] +1
-                AbilityDict['Charisma'] =  AbilityDict['Charisma'] +2
-                self.Speed = 30
-                self.Size = "Medium"
-                self.Age = random.randint(18,85)
-                self.Languages = ['Common','Infernal']                
-                return AbilityDict
+        if(race ==  'Dragonborn'):
+            AbilityDict['Strength'] =  AbilityDict['Strength'] +2
+            AbilityDict['Charisma'] = AbilityDict['Charisma']+1
+            self.Speed = 30
+            self.Size = "Medium"
+            self.Age = random.randint(15,70)
+            self.Languages = ['Common','Draconic']
+            return AbilityDict    
+        elif(race == 'Dwarf'):
+            AbilityDict['Constitution'] =  AbilityDict['Constitution'] +2
+            self.Speed = 25
+            self.Size = "Medium"
+            self.Age = random.randint(50,300)
+            self.Languages = ['Common','Dwarvish']
+            return AbilityDict
+        elif(race == 'Elf'):
+            AbilityDict['Dexterity'] =  AbilityDict['Dexterity'] +2
+            self.Speed = 30
+            self.Size = "Medium"
+            self.Age = random.randint(100,725)
+            self.Languages = ['Common','Elvish']
+            return AbilityDict
+        elif(race == 'Gnome'):
+            AbilityDict['Intelligence'] =  AbilityDict['Intelligence'] +2
+            self.Speed = 25
+            self.Size = "Small"
+            self.Age = random.randint(50,375)
+            self.Languages = ['Common','Gnomish']
+            ##subsRace Deep Gnome, Rock Gnome
+            return AbilityDict
+        elif(race == 'Half-Elf'):
+            AbilityDict['Charisma'] =  AbilityDict['Charisma'] +2
+            adjuster1 = self.getRandomAbility("Charisma")
+            AbilityDict[adjuster1] = AbilityDict[adjuster1] +1
+            adjuster2 = self.getRandomAbility("Charisma")
+            AbilityDict[adjuster2] = AbilityDict[adjuster2] +1
+            self.Speed = 30
+            self.Size = "Medium"
+            self.Age = random.randint(20,150)
+            self.Languages = ['Common','Elvish']
+            return AbilityDict
+        elif(race == 'Halfling'):
+            AbilityDict['Dexterity'] =  AbilityDict['Dexterity'] +2
+            self.Speed = 25
+            self.Size = "Small"
+            self.Age = random.randint(20,120)
+            self.Languages = ['Common','Halfling']                
+            return AbilityDict
+        elif(race == 'Half-Orc'):
+            AbilityDict['Strength'] =  AbilityDict['Strength'] +2
+            AbilityDict['Constitution'] =  AbilityDict['Constitution'] +1
+            self.Speed = 30
+            self.Size = "Medium"
+            self.Age = random.randint(15,60)
+            self.Languages = ['Common','Orc']                
+            return AbilityDict
+        elif(race == 'Human'):
+            AbilityDict['Strength'] =  AbilityDict['Strength'] +1
+            AbilityDict['Dexterity'] =  AbilityDict['Dexterity'] +1
+            AbilityDict['Constitution'] =  AbilityDict['Constitution'] +1
+            AbilityDict['Wisdom'] =  AbilityDict['Wisdom'] +1
+            AbilityDict['Intelligence'] =  AbilityDict['Intelligence'] +1
+            AbilityDict['Charisma'] =  AbilityDict['Charisma'] +1
+            self.Speed = 30
+            self.Size = "Medium"
+            self.Age = random.randint(18,80)
+            self.Languages = ['Common']                
+            return AbilityDict
+        elif(race == 'Tiefling'):
+            AbilityDict['Intelligence'] =  AbilityDict['Intelligence'] +1
+            AbilityDict['Charisma'] =  AbilityDict['Charisma'] +2
+            self.Speed = 30
+            self.Size = "Medium"
+            self.Age = random.randint(18,85)
+            self.Languages = ['Common','Infernal']                
+            return AbilityDict
     
     
     def getRandomAbility(self,DontInclude):  
