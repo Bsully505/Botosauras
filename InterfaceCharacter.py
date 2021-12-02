@@ -31,9 +31,10 @@ class Character:
     global Size 
     global Speed
     global abilities
-    abilites = ['Strength','Dexterity','Constitution','Wisdom','Intelligence','Charisma']
+   
     
     def __init__(self,Name,*args):
+        self.abilities = ['Strength','Dexterity','Constitution','Wisdom','Intelligence','Charisma']
         self.Gender = self.DeterineGender()
         self.Name = Name
         self.Race = self.GetRandomRace()
@@ -148,10 +149,10 @@ class Character:
     
     
     def getRandomAbility(self,DontInclude):  
-        temp= self.abilites[len(self.abilities)-1]
+        temp= self.abilities[len(self.abilities)-1]
         if(DontInclude):
             while(temp ==DontInclude):
-                temp= self.abilites[len(self.abilities)-1]
+                temp= self.abilities[len(self.abilities)-1]
         return temp
                
 if __name__ == '__main__':

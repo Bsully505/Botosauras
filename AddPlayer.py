@@ -24,3 +24,6 @@ class AddPlayer:
             json.dump(data, a_file)
             a_file.close()
             
+            
+if __name__ == '__main__':
+    AddPlayer.AddPlayer(AddPlayer,"Sully")

@@ -25,7 +25,7 @@
             "charisma": "1"
         },
         "Bryan": {
-            "AbilityScore":{
+            "AbilityScore": {
                 "strength": 0,
                 "dexterity": 0,
                 "constitution": 0,
@@ -33,9 +33,23 @@
                 "wisdom": 0,
                 "charisma": 0
             },
-            "Race":"Human",
+            "Race": "Human",
             "Age": 50,
             "Gender": "Male",
+            "Speed": 30
+        },
+        "Sully": {
+            "AbilityScore": {
+                "Strength": 13,
+                "Dexterity": 15,
+                "Constitution": 16,
+                "Intelligence": 11,
+                "Wisdom": 13,
+                "Charisma": 17
+            },
+            "Race": "Tiefling",
+            "Age": 28,
+            "Gender": "Female",
             "Speed": 30
         }
     }
