@@ -14,7 +14,8 @@ class CommandParser():
             'M':lambda: RollForDamage.processCommand(RollForDamage,'! '+command),
             'A':lambda: CriticalAttack.Attackroll(CriticalAttack),
             'H':lambda: Help.getHelp(),
-            'AP': lambda: AddPlayer.AddPlayer(AddPlayer,command.split(" ")[1],command.split(" ")[2])
+            'AP': lambda: AddPlayer.AddPlayer(AddPlayer,command.split(" ")[1],command.split(" ")[2]),
+            'ARP': lambda: AddPlayer.AddPlayer(AddPlayer,command.split(" ",1)[1])
         }
         return(switcher.get(key, lambda:"You did not enter a correct command type !H to get commands")())
 
