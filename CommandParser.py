@@ -4,6 +4,7 @@ from RollForDamage import RollForDamage
 from Help import Help
 from CriticalAttack import CriticalAttack
 from AddPlayer import AddPlayer
+from Item import Item
 
 class CommandParser():
     def parse(command):
@@ -14,6 +15,7 @@ class CommandParser():
             'M':lambda: RollForDamage.processCommand(RollForDamage,'! '+command),
             'A':lambda: CriticalAttack.Attackroll(CriticalAttack),
             'H':lambda: Help.getHelp(),
+            'I':lambda: Item.initialQuestion(),
             'AP': lambda: AddPlayer.AddPlayer(AddPlayer,command.split(" ")[1],command.split(" ")[2]),
             'ARP': lambda: AddPlayer.AddPlayer(AddPlayer,command.split(" ",1)[1])
         }
