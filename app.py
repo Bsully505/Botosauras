@@ -5,6 +5,7 @@ from slackeventsapi import SlackEventAdapter
 from threading import Thread
 from slack_sdk import WebClient
 from flask import Flask, Response,request
+from flask_cors import CORS
 from dotenv import load_dotenv
 from DiceRoller import DiceRoller
 from CommandParser import CommandParser
@@ -21,6 +22,7 @@ load_dotenv()
 
 url = 'https://slackevent.herokuapp.com/'
 App=Flask(__name__)
+CORS(App)
 
 #SLACK_SIGNING_SECRET = os.environ['SLACK_SIGNING_SECRET']
 #slack_token = os.environ['SLACK_BOT_TOKEN']
