@@ -46,9 +46,8 @@ class AbilityScores:
                     self.wisdom = 0
                     self.charisma = 0
 
-    def getStats(self,_player):
-            return {
-                    "Player":self.player ,
+    def get(self):
+        return {
                     "Strength":self.strength,
                     "Dexterity":self.dexterity,
                     "Constitution":self.constitution,

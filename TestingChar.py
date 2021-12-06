@@ -53,6 +53,14 @@ class TestingChar:
             dict.append(i)
         return dict
 
+    def findPlayer(self, player):
+        f = open('Char.json')
+        dict = []
+        data = json.load(f)
+        for i in data['characters']:
+            if(i == player):
+                return data['characters'][i]
+
     def PrintPlayerStats(self,PlayerUser):
         f = open('Char.json')
         dict = []

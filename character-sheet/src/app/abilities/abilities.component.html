@@ -1,5 +1,14 @@
 <div class="container">
     <div class="row">
+        <div class="col-6"></div>
+        <div class="col-1 text-right">
+            <p>User: </p>
+        </div>
+        <div class="col-2"><input type="text" [(ngModel)]="user"></div>
+        <div class="col-1"><input type="button" value="Load Data" (click)="getAbilities()"></div>
+    
+    </div>
+    <div class="row">
         <div class="col-sm-2" *ngFor="let ability of abilities; let index = index; trackBu:trackByIndex;">
             <div class="card">
                 <div class="card-body text-center">

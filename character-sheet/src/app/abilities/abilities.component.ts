@@ -8,19 +8,24 @@ import { ApiServiceService } from '../api-service.service';
 })
 export class AbilitiesComponent implements OnInit {
   abilities = [
-    {"name": "", "score": 0}
+    {"name": "Strength", "score": 0},
+    {"name": "Dexterity", "score": 0},
+    {"name": "Constitution", "score": 0},
+    {"name": "Intelligence", "score": 0},
+    {"name": "Wisdom", "score": 0},
+    {"name": "Charisma", "score": 0}
   ]
   isEditing = true;
+  user = ""
 
   constructor(private apiService: ApiServiceService) {
   }
 
   ngOnInit(): void {
-   this.getAbilities()
   }
 
   getAbilities(): void {
-    this.apiService.getAbilities().subscribe(abilities => this.abilities = abilities);
+    this.apiService.getAbilities(this.user).subscribe(abilities => this.abilities = abilities);
   }
 
   calculateModifier(value: number) {
