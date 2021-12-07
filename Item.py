@@ -166,5 +166,5 @@ class Item:
         if not(file_exists):
             print("file does not exist")
 
-Item.initialQuestion(Item)
+#Item.initialQuestion(Item)
 

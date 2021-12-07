@@ -16,7 +16,7 @@ class CommandParser():
             'M':lambda: RollForDamage.processCommand(RollForDamage,'! '+command),
             'A':lambda: CriticalAttack.Attackroll(CriticalAttack),
             'H':lambda: Help.getHelp(),
-            'I':lambda: Item.initialQuestion(),
+            #'I':lambda: Item.initialQuestion(),
             'AP': lambda: AddPlayer.AddPlayer(AddPlayer,command.split(" ")[1],command.split(" ")[2]),
             'ARP': lambda: AddPlayer.AddRandPlayer(AddPlayer,command.split(" ",1)[1]),
             'PAP': lambda: TestingChar.GetAllPlayers(),
