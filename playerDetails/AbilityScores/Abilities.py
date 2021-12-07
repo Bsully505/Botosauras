@@ -1,7 +1,8 @@
 from playerDetails.AbilityScores.AbilityScores import AbilityScores
 from playerDetails.AbilityScores.SavingThrows import SavingThrows
 from playerDetails.AbilityScores.Skills import Skills
-from TestingChar import TestingChar
+from JsonInteract import TestingChar
+import random
 
 
 import json
@@ -60,31 +61,44 @@ class Abilities:
                         dataSet = []
                         try:
                                 dataSet=  { 
-                                "strength" : args.strength,
-                                "dexterity" : args.dexterity,
-                                "constitution" : args.constitution,
-                                "intelligence" : args.intelligence,
-                                "wisdom" :  args.wisdom,
-                                "charisma" : args.charisma,
+                                "Strength" : args.strength,
+                                "Dexterity" : args.dexterity,
+                                "Constitution" : args.constitution,
+                                "Intelligence" : args.intelligence,
+                                "Wisdom" :  args.wisdom,
+                                "Charisma" : args.charisma,
                                 }
                         except:
                                 dataSet=   {
-                                "strength" : 0,
-                                "dexterity" : 0,
-                                "constitution" : 0,
-                                "intelligence" : 0,
-                                "wisdom" : 0,
-                                "charisma" : 0
+                                "Strength" : self.AbilityRoll(),
+                                "Dexterity" : self.AbilityRoll(),
+                                "Constitution" : self.AbilityRoll(),
+                                "Intelligence" : self.AbilityRoll(),
+                                "Wisdom" : self.AbilityRoll(),
+                                "Charisma" : self.AbilityRoll()
                                 }
                         #end of except
-                        data['characters'][PlayerUser] = dataSet
+                        data['characters'][PlayerUser]['AbilityScore'] = dataSet
+                        data['characters'][PlayerUser]['Inventory'] = {}
                         a_file = open("Char.json", "w")
-                        json. dump(data, a_file)
+                        json. dump(data, a_file, indent = 4)
                         a_file.close()
                 
 
                         
                 f.close()
+                
+        def AbilityRoll(self):
+                lowest =10
+                total = 0
+                for i in range(0,4):
+                        #rolling d6
+                        temp = random.randint(1,6)
+                        if(temp<lowest):
+                                lowest = temp
+                        total += temp
+                        total -=lowest
+                return total
 
         def GetAllPlayers(self):
                 f = open('Char.json')

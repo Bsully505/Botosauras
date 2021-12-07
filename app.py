@@ -12,7 +12,7 @@ from CommandParser import CommandParser
 import json
 import requests
 from playerDetails.Player import Player
-from TestingChar import TestingChar
+from JsonInteract import TestingChar
 
 
 

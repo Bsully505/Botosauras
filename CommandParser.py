@@ -5,6 +5,7 @@ from Help import Help
 from CriticalAttack import CriticalAttack
 from AddPlayer import AddPlayer
 from Item import Item
+from JsonInteract import TestingChar
 
 class CommandParser():
     def parse(command):
@@ -17,7 +18,10 @@ class CommandParser():
             'H':lambda: Help.getHelp(),
             'I':lambda: Item.initialQuestion(),
             'AP': lambda: AddPlayer.AddPlayer(AddPlayer,command.split(" ")[1],command.split(" ")[2]),
-            'ARP': lambda: AddPlayer.AddPlayer(AddPlayer,command.split(" ",1)[1])
+            'ARP': lambda: AddPlayer.AddRandPlayer(AddPlayer,command.split(" ",1)[1]),
+            'PAP': lambda: TestingChar.GetAllPlayers(),
+            'AddI': lambda: TestingChar.InsertIntoInventory(TestingChar,command.split(" ")[0],command.split(" ")[1]),
+            'PI': lambda: TestingChar.PrintInventory(TestingChar,command.split(" ")[0])
         }
         return(switcher.get(key, lambda:"You did not enter a correct command type !H to get commands")())
 

@@ -2,6 +2,14 @@
 #inventory list
 inventory = []
 class Item:
+    
+    def AddItemToInventory(self,User,ItemName):
+        #this is supposed to call the JsonInteract Class and use the InsertIntoInventory(self,User,Item): function to insert into inventory
+        print(f"Adding {ItemName} into {User}\'s Inventory")
+        
+    def RemoveItemFromInventory(self,User,ItemName):
+        #this is supposed to call the JsonInteract Class and the function def DeleteInventoryItem(self,User,item):
+        print(f"Removing {ItemName} into {User}\'s Inventory")
     oldList = [];
     y = ""
     def initialQuestion(self):
