@@ -90,7 +90,10 @@ def PrintPlayer():
 def getAbilitiesGivenUser():
     user = request.args.get("username")
     player = TestingChar.findPlayer(user)
-    return player.get()
+    response = Flask.Response()
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.set_data(player.get())
+    return response
 
 
 
