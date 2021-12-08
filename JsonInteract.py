@@ -157,9 +157,10 @@ class TestingChar:
                 #get inventory
                 return  data['characters'][i]['Inventory']#returns the dict of the inventory
                   
-        
+    def PrintWholeJsonFile(self):
+        return json.load(open('Char.json'))
 
 
 if __name__ =='__main__':
     
-    print(TestingChar.GetPlayerDict(TestingChar,"Sully"))
+    print(TestingChar.PrintWholeJsonFile(TestingChar))

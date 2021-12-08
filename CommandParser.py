@@ -17,14 +17,16 @@ class CommandParser():
             'M':lambda: RollForDamage.processCommand(RollForDamage,'! '+command),
             'A':lambda: CriticalAttack.Attackroll(CriticalAttack),
             'H':lambda: Help.getHelp(),
-            #'I':lambda: Item.initialQuestion(),
             'AP': lambda: AddPlayer.AddPlayer(AddPlayer,command.split(" ")[1],command.split(" ")[2]),
             'ARP': lambda: AddPlayer.AddRandPlayer(AddPlayer,command.split(" ",1)[1]),
             'PAP': lambda: TestingChar.GetAllPlayers(TestingChar),
-            'AddI': lambda: TestingChar.InsertIntoInventory(TestingChar,command.split(" ")[1],command.split(" ")[2]),
-            'PI': lambda: TestingChar.PrintInventory(TestingChar,command.split(" ")[1])
+            'AddI': lambda: Item.AddItemToInventory(Item,command.split(" ")[1],command.split(" ")[2]),
+            'I': lambda: Item.PrintInventory(Item,command.split(" ")[1]),
+            'RI':lambda: Item.RemoveItemFromInventory(Item,command.split(" ")[1],command.split(" ")[2])
         }
-        return(switcher.get(key, lambda:"You did not enter a correct command type !H to get commands")())
-
+        try:
+            return(switcher.get(key, lambda:"You did not enter a correct command type !H to get commands")())
+        except:
+            return("Error on Server side make sure you wrote a correct command")
 if __name__ == '__main__':
     print(CommandParser.parse('PI Sully'))
