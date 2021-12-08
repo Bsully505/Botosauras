@@ -87,9 +87,8 @@ def PrintPlayer():
         
 
 @App.route('/players/<user>', methods=['GET'])
-def getAbilitiesGivenUser():
-    user = request.args.get("username")
-    player = TestingChar.findPlayer(user)
+def getAbilitiesGivenUser(user):
+    player = TestingChar.GetPlayer(user)
     response = Flask.Response()
     response.headers["Access-Control-Allow-Origin"] = "*"
     response.set_data(player.get())
