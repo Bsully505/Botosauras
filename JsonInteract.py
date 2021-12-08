@@ -85,6 +85,7 @@ class TestingChar:
             dict.append(i)
         return dict
 
+    
     def findPlayer(self, player):
         f = open('Char.json')
         dict = []
@@ -92,6 +93,15 @@ class TestingChar:
         for i in data['characters']:
             if(i == player):
                 return data['characters'][i]
+            
+    def GetPlayer(self,User):
+        f = open('Char.json')
+        dict = {}
+        data = json.load(f)
+        for i in data['characters']:
+            if(i == User):
+                dict[i] = data['characters'][i]
+                return dict
 
     def PrintPlayerStats(self,PlayerUser):
         f = open('Char.json')
@@ -152,4 +162,4 @@ class TestingChar:
 
 if __name__ =='__main__':
     
-    print(TestingChar.PrintInventory(TestingChar,"Sully"))
+    print(TestingChar.GetPlayerDict(TestingChar,"Sully"))
