@@ -7,14 +7,14 @@ import { ApiServiceService } from '../api-service.service';
   styleUrls: ['./abilities.component.css']
 })
 export class AbilitiesComponent implements OnInit {
-  abilities = [
-    {"name": "Strength", "score": 0},
-    {"name": "Dexterity", "score": 0},
-    {"name": "Constitution", "score": 0},
-    {"name": "Intelligence", "score": 0},
-    {"name": "Wisdom", "score": 0},
-    {"name": "Charisma", "score": 0}
-  ]
+
+  abilities =
+    {"Charisma": 0,
+    "Constitution": 0,
+    "Dexterity": 0,
+    "Intelligence": 0,
+    "Strength": 0,
+    "Wisdom": 0}
   isEditing = true;
   user = ""
 
@@ -25,7 +25,10 @@ export class AbilitiesComponent implements OnInit {
   }
 
   getAbilities(): void {
-    this.apiService.getAbilities(this.user).subscribe(abilities => this.abilities = abilities);
+    this.apiService.getAbilities(this.user).subscribe(player => {
+      this.abilities = player[this.user].AbilityScore
+    });
+    
   }
 
   calculateModifier(value: number) {
