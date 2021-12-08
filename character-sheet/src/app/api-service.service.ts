@@ -11,7 +11,7 @@ export class ApiServiceService {
 
   constructor(private http: HttpClient) { }
 
-  getAbilities(user: String): Observable<Ability[]> {
+  getAbilities(user: String): Observable<any> {
     const abilities = of([
         {"name": "STRENGTH", "score": 20},
         {"name": "DEXTERITY",  "score": 20}, 
@@ -20,12 +20,7 @@ export class ApiServiceService {
         {"name": "WISDOM", "score": 20},
         {"name": "CHARISMA", "score": 20}
     ])
-    let player = {}
 
-    this.http.get(this.url + "players/" + user).subscribe((player) => {
-      player = player
-    })
-    
-    return abilities
+    return this.http.get(this.url + "players/" + user)
   }
 }
