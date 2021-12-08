@@ -143,10 +143,10 @@ class TestingChar:
         dict = []
         data = json.load(f)
         for i in data['characters']:
-            if(i ==User):# I am at the characters index 
+            if(i == User):# I am at the characters index 
                 #get inventory
                 return  data['characters'][i]['Inventory']#returns the dict of the inventory
-                    
+                  
         
 
 

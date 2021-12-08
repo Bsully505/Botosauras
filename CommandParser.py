@@ -11,6 +11,7 @@ class CommandParser():
     def parse(command):
         #command should be in context of !(key command) (parameters)
         key = command.split(' ')[0].upper()
+        
         switcher={
             'R':lambda: DiceRoller.getRoll(DiceRoller,'!'+command),
             'M':lambda: RollForDamage.processCommand(RollForDamage,'! '+command),
@@ -19,10 +20,11 @@ class CommandParser():
             #'I':lambda: Item.initialQuestion(),
             'AP': lambda: AddPlayer.AddPlayer(AddPlayer,command.split(" ")[1],command.split(" ")[2]),
             'ARP': lambda: AddPlayer.AddRandPlayer(AddPlayer,command.split(" ",1)[1]),
-            'PAP': lambda: TestingChar.GetAllPlayers(),
-            'AddI': lambda: TestingChar.InsertIntoInventory(TestingChar,command.split(" ")[0],command.split(" ")[1]),
-            'PI': lambda: TestingChar.PrintInventory(TestingChar,command.split(" ")[0])
+            'PAP': lambda: TestingChar.GetAllPlayers(TestingChar),
+            'AddI': lambda: TestingChar.InsertIntoInventory(TestingChar,command.split(" ")[1],command.split(" ")[2]),
+            'PI': lambda: TestingChar.PrintInventory(TestingChar,command.split(" ")[1])
         }
         return(switcher.get(key, lambda:"You did not enter a correct command type !H to get commands")())
 
-        
+if __name__ == '__main__':
+    print(CommandParser.parse('PI Sully'))
