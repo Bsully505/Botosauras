@@ -81,18 +81,23 @@ def PostCharStats():
 
 @App.route('/PostAttrib', methods=['POST'])
 def PostAttributes():
-
-    json_dict = request.get_json()
-    strength = json_dict["attribute"]
-    dexterity = json_dict["attribute"]
-    constitution = json_dict["attribute"]
-    intelligence = json_dict["attribute"]
-    wisdom = json_dict["attribute"]
-    charisma = json_dict["attribute"]
-    ability = Abilities(strength, dexterity, constitution, intelligence, wisdom, charisma)
-    
-
-    return {"Ability": ability}
+    try:
+        json_dict = request.get_json()
+        strength = json_dict[0]['AbilityScore']["Strength"]
+        dexterity = json_dict[0]['AbilityScore']["Dexterity"]
+        constitution = json_dict[0]['AbilityScore']["Constitution"]
+        intelligence = json_dict[0]['AbilityScore']["Intelligence"]
+        wisdom = json_dict[0]['AbilityScore']["Wisdom"]
+        charisma = json_dict[0]['AbilityScore']["Charisma"]
+        TestingChar.EditPlayerStats(TestingChar,json_dict[0],'Strength',strength)
+        TestingChar.EditPlayerStats(TestingChar,json_dict[0],'Dexterity',dexterity)
+        TestingChar.EditPlayerStats(TestingChar,json_dict[0],'Constitution',constitution)
+        TestingChar.EditPlayerStats(TestingChar,json_dict[0],'Intelligence',intelligence)
+        TestingChar.EditPlayerStats(TestingChar,json_dict[0],'Wisdom',wisdom)
+        TestingChar.EditPlayerStats(TestingChar,json_dict[0],'Charisma',charisma)
+        return 201
+    except:
+        return 400
 
 @App.route('/PrintPlayers',methods = ['GET'])
 def PrintPlayer():

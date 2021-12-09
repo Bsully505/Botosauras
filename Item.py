@@ -1,31 +1,29 @@
-from JsonInteract import TestingChar
+
 #inventory list
+from JsonInteract import TestingChar
 inventory = []
 class Item:
     
     def AddItemToInventory(self,User,ItemName):
         #this is supposed to call the JsonInteract Class and use the InsertIntoInventory(self,User,Item): function to insert into inventory
-        TestingChar.InsertIntoInventory(self,User,ItemName)
+        return TestingChar.InsertIntoInventory(self,User,ItemName)
         print(f"Adding {ItemName} into {User}\'s Inventory")
-
     def ReadInventory(self,User):
         #this is supposed to call the JsonInteract Class and use the InsertIntoInventory(self,User,Item): function to insert into inventory
-        TestingChar.PrintInventory(self,User)
         print(f"{User}\'s Inventory: ")
-
+        return TestingChar.PrintInventory(self,User)
+        
+    #Def is to test print() in JsonInterct.py
     def PrintInventory(self, User):
         # this is supposed to call the JsonInteract Class and use the InsertIntoInventory(self,User,Item): function to insert into inventory
-        TestingChar.PrintInventory(self, User)
         print(f"{User}\'s Inventory: ")
-
-
-
+        return TestingChar.Print(self, User)
+        
+        
     def RemoveItemFromInventory(self,User,ItemName):
         #this is supposed to call the JsonInteract Class and the function def DeleteInventoryItem(self,User,item):
-        TestingChar.DeleteInventoryItem(self,User,ItemName)
         print(f"Removing {ItemName} into {User}\'s Inventory")
-
-        
+        return TestingChar.DeleteInventoryItem(TestingChar,User,ItemName)
     oldList = [];
     y = ""
     def initialQuestion(self):
