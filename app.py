@@ -14,7 +14,7 @@ from CommandParser import CommandParser
 import json
 import requests
 from playerDetails.Player import Player
-from TestingChar import TestingChar
+from JsonInteract import TestingChar
 
 
 
@@ -103,10 +103,9 @@ def PrintPlayer():
         
 
 @App.route('/players/<user>', methods=['GET'])
-def getAbilitiesGivenUser():
-    user = request.args.get("username")
-    player = TestingChar.findPlayer(user)
-    return player.get()
+def getAbilitiesGivenUser(user):
+    player = TestingChar.GetPlayer(TestingChar, user)
+    return player
 
 
 
