@@ -1,6 +1,8 @@
 import os
 import time
 import re
+from playerDetails.AbilityScores.Abilities import Abilities
+from playerDetails.AbilityScores.AbilityScores import AbilityScores
 from slackeventsapi import SlackEventAdapter
 from threading import Thread
 from slack_sdk import WebClient
@@ -77,6 +79,20 @@ def PostCharStats():
 
     return {"Player": User}
 
+@App.route('/PostAttrib', methods=['POST'])
+def PostAttributes():
+
+    json_dict = request.get_json()
+    strength = json_dict["attribute"]
+    dexterity = json_dict["attribute"]
+    constitution = json_dict["attribute"]
+    intelligence = json_dict["attribute"]
+    wisdom = json_dict["attribute"]
+    charisma = json_dict["attribute"]
+    ability = Abilities(strength, dexterity, constitution, intelligence, wisdom, charisma)
+    
+
+    return {"Ability": ability}
 
 @App.route('/PrintPlayers',methods = ['GET'])
 def PrintPlayer():
