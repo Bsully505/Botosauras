@@ -5,6 +5,7 @@ from Help import Help
 from CriticalAttack import CriticalAttack
 from AddPlayer import AddPlayer
 from JsonInteract import TestingChar
+from Item import Item
 
 class CommandParser():
     def parse(command):
@@ -19,7 +20,7 @@ class CommandParser():
             'AP': lambda: AddPlayer.AddPlayer(AddPlayer,command.split(" ")[1],command.split(" ")[2]),
             'ARP': lambda: AddPlayer.AddRandPlayer(AddPlayer,command.split(" ",1)[1]),
             'PAP': lambda: TestingChar.GetAllPlayers(TestingChar),
-            'AddI': lambda: Item.AddItem(Item,command.split(" ")[1],command.split(" ")[2]),
+            'ADDI': lambda: Item.AddItem(Item,command.split(" ")[1],command.split(" ")[2]),
             'I': lambda: Item.PrintInventory(Item,command.split(" ")[1]),
             'RI':lambda: Item.ReadAndRemove(Item,command.split(" ")[1],command.split(" ")[2])
         }
