@@ -11,7 +11,8 @@
             },
             "Inventory": {
                 "Knife": 1,
-                "Dragon Sword": 1
+                "Dragon Sword": 1,
+                "Sword": 1
             },
             "Race": "Human",
             "Age": 35,
