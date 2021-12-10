@@ -22,7 +22,7 @@ class CommandParser():
             'PAP': lambda: TestingChar.GetAllPlayers(TestingChar),
             'ADDI': lambda: Item.AddItemToInventory(Item,command.split(" ")[1],command.split(" ")[2]),
             'I': lambda: Item.PrintInventory(Item,command.split(" ")[1]),
-            'RI':lambda: Item.ReadAndRemove(Item,command.split(" ")[1],command.split(" ")[2]),
+            'RI':lambda: Item.RemoveItemFromInventory(Item,command.split(" ")[1],command.split(" ")[2]),
             'PJSON':lambda: TestingChar.PrintWholeJsonFile(TestingChar),
             'DP':lambda: TestingChar.DeletePlayer(TestingChar,command.split(" ",1)[1])
         }
