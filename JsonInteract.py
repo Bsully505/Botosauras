@@ -160,6 +160,21 @@ class TestingChar:
         data = json.load(fp)
         #  Use the slicing to get a particular value from a json file.
         print(data['characters'][User]['Inventory'])
+    
+    def DeletePlayer(self,User):
+        fp = open("Char.json")
+        data = json.load(fp)
+        print(User)
+        res = data['characters'].pop(User, None)
+        if(res):
+            a_file = open("Char.json", "w")
+            json.dump(data, a_file, indent=4)
+            a_file.close()
+            return 'Success'
+        return 'Failure'
+            
+        
+        
 
 
 if __name__ == '__main__':

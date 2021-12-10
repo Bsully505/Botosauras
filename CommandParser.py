@@ -17,16 +17,19 @@ class CommandParser():
             'M':lambda: RollForDamage.processCommand(RollForDamage,'! '+command),
             'A':lambda: CriticalAttack.Attackroll(CriticalAttack),
             'H':lambda: Help.getHelp(),
-            'AP': lambda: AddPlayer.AddPlayer(AddPlayer,command.split(" ")[1],command.split(" ")[2]),
+            'AP': lambda: AddPlayer.AddPlayer(AddPlayer,command.split(" ")[1],command.split(" ",2)[2]),
             'ARP': lambda: AddPlayer.AddRandPlayer(AddPlayer,command.split(" ",1)[1]),
             'PAP': lambda: TestingChar.GetAllPlayers(TestingChar),
             'ADDI': lambda: Item.AddItemToInventory(Item,command.split(" ")[1],command.split(" ")[2]),
             'I': lambda: Item.PrintInventory(Item,command.split(" ")[1]),
-            'RI':lambda: Item.ReadAndRemove(Item,command.split(" ")[1],command.split(" ")[2])
+            'RI':lambda: Item.ReadAndRemove(Item,command.split(" ")[1],command.split(" ")[2]),
+            'PJSON':lambda: TestingChar.PrintWholeJsonFile(TestingChar),
+            'DP':lambda: TestingChar.DeletePlayer(TestingChar,command.split(" ",1)[1])
         }
         try:
             return(switcher.get(key, lambda:"You did not enter a correct command type !H to get commands")())
         except:
             return("Error on Server side make sure you wrote a correct command")
 if __name__ == '__main__':
-    print(CommandParser.parse('ADDI Sully Sword'))
+    #print(CommandParser.parse('ARP Sully1'))
+    print(CommandParser.parse('H'))

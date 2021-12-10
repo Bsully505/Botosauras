@@ -9,6 +9,17 @@ class Help:
         helper +=DamageHelp
         AddRandomPlayer = 'Adding Random Player: !ARP (Name) this will create a random Character generator\n'
         helper += AddRandomPlayer
-        AddRandomPlayer = 'Print All Players: !PAP no Params just prints out all the names of the characters\n'
-
+        PrintAllPlayer = 'Print All Players: !PAP no Params just prints out all the names of the characters\n'
+        helper += PrintAllPlayer
+        AddInv = 'Add for Inventory: !ADDI (User) (ItemName) Prints out if it is success or failure\n'
+        helper += AddInv
+        PrintI = 'Print Inventory: !I (User) Prints out the inventory of the user\n'
+        helper += PrintI
+        DeleteItem = 'Deletes an item from user: !RI (User) (ItemName) prints out if successful or not\n'
+        helper += DeleteItem
+        PrintJsonFile = 'Print all of the json file: !PJSON no Params Prints out the entire json file \n'
+        helper += PrintJsonFile
+        DeletePlayer = 'Deletes Player: !DP (User) deletes the user in the command \n'
+        helper += DeletePlayer
+        
         return helper

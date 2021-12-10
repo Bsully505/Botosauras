@@ -95,5 +95,5 @@ class DiceRoller:
 
 if (__name__ == "__main__"):
     #+2 will be replaced with a skill that will then be used to calculate the bonus to be added
-    DiceRoller.getRoll(DiceRoller,'!1D20 +2 A')
+    DiceRoller.getRoll(DiceRoller,'!R 1D20 +2 A')
 
