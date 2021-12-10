@@ -24,9 +24,9 @@ class CommandParser():
             'I': lambda: Item.PrintInventory(Item,command.split(" ")[1]),
             'RI':lambda: Item.ReadAndRemove(Item,command.split(" ")[1],command.split(" ")[2])
         }
-        
-        return(switcher.get(key, lambda:"You did not enter a correct command type !H to get commands")())
-        
-            #return("Error on Server side make sure you wrote a correct command")
+        try:
+            return(switcher.get(key, lambda:"You did not enter a correct command type !H to get commands")())
+        except:
+            return("Error on Server side make sure you wrote a correct command")
 if __name__ == '__main__':
     print(CommandParser.parse('ADDI Sully Sword'))
