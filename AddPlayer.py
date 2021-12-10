@@ -6,17 +6,18 @@ import random
 class AddPlayer:
     url = 'https://slackevent.herokuapp.com/'
     def AddPlayer(self,is_DM,User):
-        try:
-            self.AddPlayer(User)
+        #try:
+            self.AddPlayerNew(self,User)
             #res =requests.post(self.url+'PostChar', json= {"type":is_DM,"User":User})
             return 'Success'
-        except:
-            return 'Failure'
+        #except:
+         #   return 'Failure'
     
-    def AddPlayer(self,PlayerUser,*args):
+    def AddPlayerNew(self,PlayerUser,*args):
                 f = open('Char.json')
                 dict = {}
                 data = json.load(f)
+                f.close()
                 AlreadyExist = False
                 for i in data['characters']:
                         if(i == PlayerUser):
@@ -36,34 +37,35 @@ class AddPlayer:
                                 }
                         except:
                                 dataSet=   {
-                                "Strength" : self.AbilityRoll(),
-                                "Dexterity" : self.AbilityRoll(),
-                                "Constitution" : self.AbilityRoll(),
-                                "Intelligence" : self.AbilityRoll(),
-                                "Wisdom" : self.AbilityRoll(),
-                                "Charisma" : self.AbilityRoll()
+                                "Strength" : self.AbilityRoll(self),
+                                "Dexterity" : self.AbilityRoll(self),
+                                "Constitution" : self.AbilityRoll(self),
+                                "Intelligence" : self.AbilityRoll(self),
+                                "Wisdom" : self.AbilityRoll(self),
+                                "Charisma" : self.AbilityRoll(self)
                                 }
                         #end of except
-                        data['characters'][PlayerUser]['AbilityScore'] = dataSet
-                        data['characters'][PlayerUser]['Inventory'] = {}
-                        a_file = open("Char.json", "w")
-                        json. dump(data, a_file, indent = 4)
-                        a_file.close()
-                
+                        data['characters'][PlayerUser] = {'AbilityScore':{},'Inventory':{}}
 
+                        data['characters'][PlayerUser]['AbilityScore'] = dataSet
+
+                        data['characters'][PlayerUser]['Inventory'] = {}
                         
-                f.close()
+                        a_file = open("Char.json", "w")
+                        json.dump(data, a_file, indent = 4)
+                        a_file.close()         
+                
                 
     def AbilityRoll(self):
         lowest =10
         total = 0
         for i in range(0,4):
                 #rolling d6
-                temp = random.randint(1,6)
-                if(temp<lowest):
-                        lowest = temp
-                total += temp
-                total -=lowest
+            temp = random.randint(1,6)
+            if(temp<lowest):
+                lowest = temp
+            total += temp
+        total -=lowest
         return total
 
     def AddRandPlayer(self,Name):
@@ -83,4 +85,4 @@ class AddPlayer:
             
             
 if __name__ == '__main__':
-    AddPlayer.AddPlayer(AddPlayer,"Sully")
+    print(AddPlayer.AddPlayer(AddPlayer,False,"Sully1"))
