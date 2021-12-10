@@ -53,6 +53,17 @@
             "Age": 15,
             "Gender": "Male",
             "Speed": 30
+        },
+        "Sully2": {
+            "AbilityScore": {
+                "Strength": 7,
+                "Dexterity": 6,
+                "Constitution": 9,
+                "Intelligence": 14,
+                "Wisdom": 10,
+                "Charisma": 12
+            },
+            "Inventory": {}
         }
     }
 }

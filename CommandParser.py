@@ -32,5 +32,5 @@ class CommandParser():
             return("Error on Server side make sure you wrote a correct command")
 if __name__ == '__main__':
     pass
-    #print(CommandParser.parse('ARP Sully1'))
+    #print(CommandParser.parse('I Sully2'))
     #print(CommandParser.parse('AP True Sully1'))
