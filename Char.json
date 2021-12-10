@@ -11,12 +11,47 @@
             },
             "Inventory": {
                 "Knife": 1,
-                "Dragon Sword": 1,
-                "Sword": 1
+                "Dragon Sword": 1
             },
             "Race": "Human",
             "Age": 35,
             "Gender": "Female",
+            "Speed": 30
+        },
+        "Timmy": {
+            "AbilityScore": {
+                "Strength": 11,
+                "Dexterity": 9,
+                "Constitution": 7,
+                "Intelligence": 10,
+                "Wisdom": 16,
+                "Charisma": 10
+            },
+            "Inventory": {
+                "Dagger": 1,
+                "Long Sword": 1
+            },
+            "Race": "Human",
+            "Age": 24,
+            "Gender": "Male",
+            "Speed": 30
+        },
+        "Sid": {
+            "AbilityScore": {
+                "Strength": 14,
+                "Dexterity": 10,
+                "Constitution": 11,
+                "Intelligence": 16,
+                "Wisdom": 12,
+                "Charisma": 8
+            },
+            "Inventory": {
+                "Axe": 1,
+                "Short Bow": 1
+            },
+            "Race": "Orc",
+            "Age": 15,
+            "Gender": "Male",
             "Speed": 30
         }
     }
