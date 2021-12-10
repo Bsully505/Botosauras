@@ -151,7 +151,7 @@ class TestingChar:
             if (i == User):  # I am at the characters index
                 # get inventory
                 return data['characters'][i]['Inventory']  # returns the dict of the inventory
-
+        return 'No Such Player'
     def PrintWholeJsonFile(self):
         return json.load(open('Char.json'))
 

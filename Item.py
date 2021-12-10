@@ -15,7 +15,7 @@ class Item:
     def PrintInventory(self, User):
         # this is supposed to call the JsonInteract Class and use the InsertIntoInventory(self,User,Item): function to insert into inventory
         print(f"{User}\'s Inventory: ")
-        return(TestingChar.Print(self, User))
+        return(TestingChar.PrintInventory(self, User))
 
 
     def ReadInventory(self, User):
