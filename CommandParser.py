@@ -4,7 +4,7 @@ from RollForDamage import RollForDamage
 from Help import Help
 from CriticalAttack import CriticalAttack
 from AddPlayer import AddPlayer
-from Item import Item
+from Item1 import Item
 from JsonInteract import TestingChar
 
 class CommandParser():
@@ -20,9 +20,9 @@ class CommandParser():
             'AP': lambda: AddPlayer.AddPlayer(AddPlayer,command.split(" ")[1],command.split(" ")[2]),
             'ARP': lambda: AddPlayer.AddRandPlayer(AddPlayer,command.split(" ",1)[1]),
             'PAP': lambda: TestingChar.GetAllPlayers(TestingChar),
-            'AddI': lambda: Item.AddItemToInventory(Item,command.split(" ")[1],command.split(" ")[2]),
+            'AddI': lambda: Item.AddItem(Item,command.split(" ")[1],command.split(" ")[2]),
             'I': lambda: Item.PrintInventory(Item,command.split(" ")[1]),
-            'RI':lambda: Item.RemoveItemFromInventory(Item,command.split(" ")[1],command.split(" ")[2])
+            'RI':lambda: Item.ReadAndRemove(Item,command.split(" ")[1],command.split(" ")[2])
         }
         try:
             return(switcher.get(key, lambda:"You did not enter a correct command type !H to get commands")())
