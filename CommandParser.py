@@ -4,7 +4,6 @@ from RollForDamage import RollForDamage
 from Help import Help
 from CriticalAttack import CriticalAttack
 from AddPlayer import AddPlayer
-from Item1 import Item
 from JsonInteract import TestingChar
 
 class CommandParser():
