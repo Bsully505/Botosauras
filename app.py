@@ -116,7 +116,6 @@ def getAbilitiesGivenUser(user):
 
 @slack_events_adapter.on("app_mention")
 def handle_mentions(event_data):
-    print(event_data)
     #Parse thought the line to determine what the bot has to do 
     event = event_data["event"]
     if('!' in event['text']):
