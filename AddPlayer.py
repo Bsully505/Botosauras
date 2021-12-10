@@ -1,14 +1,71 @@
 import requests 
 from InterfaceCharacter import Character
 import json
+import random
  
 class AddPlayer:
     url = 'https://slackevent.herokuapp.com/'
     def AddPlayer(self,is_DM,User):
-        
-        res =requests.post(self.url+'PostChar', json= {"type":is_DM,"User":User})
-        return res.text
+        try:
+            self.AddPlayer(User)
+            #res =requests.post(self.url+'PostChar', json= {"type":is_DM,"User":User})
+            return 'Success'
+        except:
+            return 'Failure'
     
+    def AddPlayer(self,PlayerUser,*args):
+                f = open('Char.json')
+                dict = {}
+                data = json.load(f)
+                AlreadyExist = False
+                for i in data['characters']:
+                        if(i == PlayerUser):
+                                AlreadyExist = True
+                if(AlreadyExist is False):
+                #insert new player
+                
+                        dataSet = []
+                        try:
+                                dataSet=  { 
+                                "Strength" : args.strength,
+                                "Dexterity" : args.dexterity,
+                                "Constitution" : args.constitution,
+                                "Intelligence" : args.intelligence,
+                                "Wisdom" :  args.wisdom,
+                                "Charisma" : args.charisma,
+                                }
+                        except:
+                                dataSet=   {
+                                "Strength" : self.AbilityRoll(),
+                                "Dexterity" : self.AbilityRoll(),
+                                "Constitution" : self.AbilityRoll(),
+                                "Intelligence" : self.AbilityRoll(),
+                                "Wisdom" : self.AbilityRoll(),
+                                "Charisma" : self.AbilityRoll()
+                                }
+                        #end of except
+                        data['characters'][PlayerUser]['AbilityScore'] = dataSet
+                        data['characters'][PlayerUser]['Inventory'] = {}
+                        a_file = open("Char.json", "w")
+                        json. dump(data, a_file, indent = 4)
+                        a_file.close()
+                
+
+                        
+                f.close()
+                
+    def AbilityRoll(self):
+        lowest =10
+        total = 0
+        for i in range(0,4):
+                #rolling d6
+                temp = random.randint(1,6)
+                if(temp<lowest):
+                        lowest = temp
+                total += temp
+                total -=lowest
+        return total
+
     def AddRandPlayer(self,Name):
         f = open('Char.json')
         RandChar = Character(Name)
